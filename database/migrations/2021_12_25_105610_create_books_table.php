@@ -15,14 +15,14 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_buku')->unique();
-            $table->string('judul');
-            $table->string('slug');
-            $table->string('penerbit');
-            $table->string('pengarang');
+            $table->string('kode_buku', 50)->unique();
+            $table->string('judul', 100);
+            $table->string('slug', 100);
+            $table->string('penerbit', 50);
+            $table->string('pengarang', 50);
             $table->foreignId('category_id');
             $table->integer('jumlah');
-            $table->string('rak');
+            $table->string('rak', 20);
             $table->text('image');
             $table->softDeletes();
             $table->timestamps();

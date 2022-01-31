@@ -26,12 +26,12 @@ class BookRequest extends FormRequest
     {
         return [
             'kode_buku' => 'required', 'unique:books'.$book->id,
-            'judul' => ['required', 'max:255'],
-            'pengarang' => ['required', 'max:100'],
-            'penerbit' => ['required', 'max:100'],
+            'judul' => ['required', 'max:100'],
+            'pengarang' => ['required', 'max:50'],
+            'penerbit' => ['required', 'max:50'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'jumlah' => ['integer'],
-            'rak' => ['max:50'],
+            'rak' => ['max:20'],
             'image' => 'required|image'
         ];
     }

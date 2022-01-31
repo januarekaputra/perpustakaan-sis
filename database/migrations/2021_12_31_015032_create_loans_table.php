@@ -15,7 +15,7 @@ class CreateLoansTable extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_peminjaman')->unique();
+            $table->string('kode_peminjaman', 50)->unique();
             $table->foreignId('members_id')->constrained()->cascadeOnDelete();
             $table->foreignId('books_id')->constrained()->cascadeOnDelete();
             $table->date('tgl_pinjam');

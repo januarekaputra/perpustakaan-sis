@@ -47,6 +47,9 @@ Sanur Independent School Library | Categories
             </div>
         </div>
     </section>
+    <div class="d-flex justify-content-center">
+        {{ $categories->links() }}
+    </div>
 </main>
 
 @endsection

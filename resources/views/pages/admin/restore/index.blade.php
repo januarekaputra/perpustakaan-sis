@@ -7,9 +7,6 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">All Restore</h1>
-        <a href="{{ route('restore.create') }}" class="btn btn-sm btn-primary shadow-sm">
-          <i class="fas fa-plus fa-sm text-white-50"></i> Add Restore
-        </a>
     </div>
 
     @if (session()->has('delete'))
@@ -39,16 +36,18 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->loan->kode_peminjaman }}</td>
-                  <td>{{ $item->loan->nama_anggota }}</td>
-                  <td>{{ $item->loan->judul }}</td>
+                  <td>{{ $item->loan->member->nama_anggota }}</td>
+                  <td>{{ $item->loan->book->judul }}</td>
                   <td>{{ $item->loan->tgl_pinjam }}</td>
                   <td>{{ $item->loan->tgl_pengembalian }}</td>
                   <td>{{ $tgl_kembali }}</td>
-                  @if ($item->loan->tgl_pengembalian < $tgl_kembali)
-                    <td>{{ $item->status == 'Terlambat' }}</td>
-                  @else
-                    <td>{{ $item->status == 'Kembali' }}</td>
-                  @endif
+                  <td>
+                    @if ($item->loan->tgl_pengembalian < $tgl_kembali)
+                      <label class="badge badge-danger">Terlambat</label>
+                    @else
+                      <label class="badge badge-success">Kembali</label>
+                    @endif
+                  </td>
                 </tr>
                 @empty
                 <tr>

@@ -62,7 +62,7 @@
             <th>BARCODE</th>
             <td>
               @php
-                echo DNS1D::getBarcodeSVG($item->no_anggota, 'C39+');
+                echo DNS1D::getBarcodeSVG($item->no_anggota, 'C39');
                 // echo DNS1D::getBarcodeHTML('4445645656', 'CODE11');
               @endphp
             </td>

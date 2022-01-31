@@ -36,12 +36,12 @@ class RestoreController extends Controller
      */
     public function create($id)
     {
-        $item = Loan::findOrFail($id);
+        // $item = Loan::findOrFail($id);
 
-        return view('pages.admin.restore.create', [
-            'item' => $item,
-            'title' => 'EDIT BOOK',
-        ]);
+        // return view('pages.admin.restore.create', [
+        //     'item' => $item,
+        //     'title' => 'EDIT BOOK',
+        // ]);
     }
 
     /**
@@ -86,16 +86,16 @@ class RestoreController extends Controller
      */
     public function update(RestoreRequest $request, $id)
     {
-        $data = $request->all();
+        // $data = $request->all();
 
-        $item = Loan::findOrFail($id);
-        $edit = $item->update($data);
-        if($edit) {
-            alert()->success('Success', 'Book Has Been Updated!');
-            return redirect()->route('restore.index')->with('edit', 'Book Has Been Updated!');
-        }
-            alert()->error('Error','Opps, Book Cannot Be Updated!');
-            return redirect()->route('restore.index');
+        // $item = Loan::findOrFail($id);
+        // $edit = $item->update($data);
+        // if($edit) {
+        //     alert()->success('Success', 'Book Has Been Updated!');
+        //     return redirect()->route('restore.index')->with('edit', 'Book Has Been Updated!');
+        // }
+        //     alert()->error('Error','Opps, Book Cannot Be Updated!');
+        //     return redirect()->route('restore.index');
     }
 
     /**

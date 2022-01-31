@@ -110,8 +110,8 @@ class MemberController extends Controller
             alert()->success('Success', 'Member Has Been Updated!');
             return redirect()->route('member.index')->with('edit', 'Member Has Been Updated!');
         }
-        alert()->error('Error','Opps, Member Cannot Be Updated!');
-        return redirect()->route('member.index');
+            alert()->error('Error','Opps, Member Cannot Be Updated!');
+            return redirect()->route('member.index');
     }
 
     /**

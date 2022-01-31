@@ -32,7 +32,7 @@ class Restore extends Model
 
     public function loan()
     {
-        return $this->belongsTo(Loan::class, 'loan_id', 'id');
+        return $this->belongsTo(Loan::class, 'loans_id', 'id');
     }
 
 }

@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'kode_kategori' => 'required|unique:categories'.$category->id,
-            'nama_kategori' => 'required|max:100'
+            'nama_kategori' => 'required|max:30'
         ];
     }
 }

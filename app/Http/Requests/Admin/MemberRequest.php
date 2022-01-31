@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Member;
+use Illuminate\Validation\Rule;
 
 class MemberRequest extends FormRequest
 {
@@ -25,13 +26,13 @@ class MemberRequest extends FormRequest
     public function rules(Member $member)
     {
         return [
-            'no_anggota' => 'unique:members'.$member->id,
+            'no_anggota' => 'required', 'unique:members' . $member->id,
             'nama_anggota' => ['required', 'max:50'],
             'jen_kel' => ['required'],
             'status' => ['required'],
             'alamat' => ['required', 'max:100'],
-            'email' => ['max:100', 'unique:members'.$member->id],
-            'no_telp' => ['max:13', 'unique:members'.$member->id]
+            'email' => ['max:100'],
+            'no_telp' => ['max:13', 'required']
         ];
     }
 }

@@ -10,6 +10,8 @@ use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Restore;
+use Illuminate\Support\Facades\Date;
 
 class LoanController extends Controller
 {
@@ -49,7 +51,7 @@ class LoanController extends Controller
         $week = mktime(0,0,0,date("n"), date("j") + 7, date("Y"));
         $tgl_pengembalian = date('Y-m-d', $week);
         $kode_peminjaman = Loan::kode();
-        
+
         return view('pages.admin.loan.create', [
             'books' => $books,
             'members' => $members,
@@ -76,7 +78,7 @@ class LoanController extends Controller
             'tgl_pengembalian' => 'required|date',
             'books_id' => 'required|integer|exists:books,id'
         ]);
-        
+
         $create = Loan::create($validatedData);
         $create->book->where('id', $create->books_id)
         ->update(['jumlah' => ($create->book->jumlah - 1),]);
@@ -130,15 +132,20 @@ class LoanController extends Controller
         $item->update([
             'keadaan' => 'Dikembalikan'
         ]);
-        
+        Restore::create([
+            'loans_id' => $id,
+            'tgl_kembali' => Date("Y-m-d"),
+            'status' => 'Kembali'
+        ]);
+
         $item->book->where('id', $item->book->id)->update(['jumlah' => ($item->book->jumlah + 1),]);
 
         if($item) {
-            alert()->success('Success', 'Loan Has Been Updated!');
-            return redirect()->route('loan.index')->with('edit', 'Loan Has Been Updated!');
+            alert()->success('Success', 'Restore Has Been Updated!');
+            return redirect()->route('restore.index')->with('edit', 'restore Has Been Updated!');
         }
-            alert()->error('Error','Opps, Loan Cannot Be Updated!');
-            return redirect()->route('loan.index');
+            alert()->error('Error','Opps, Restore Cannot Be Updated!');
+            return redirect()->route('restore.index');
     }
     /**
      * Remove the specified resource from storage.
@@ -149,7 +156,7 @@ class LoanController extends Controller
     public function destroy($id)
     {
         $item = Loan::findOrFail($id);
-        
+
         $delete = $item->delete();
         if ($delete) {
             alert()->success('Success','Loan Has Been Deleted!');
@@ -158,20 +165,5 @@ class LoanController extends Controller
         alert()->error('Error','Opps, Loan Cannot Be Deleted!');
         return redirect()->route('loan.index');
     }
-
-    // public function kembalikan($id)
-    // {
-    //     $item = Loan::findOrFail($id)->update([
-    //         'keadaan' => 'Dikembalikan'
-    //     ]);
-    //     $item->book->where('id', $item->book->id)->update(['jumlah' => ($item->book->jumlah + 1),]);
-
-    //     if($item) {
-    //         alert()->success('Success', 'Loan Has Been Updated!');
-    //         return redirect()->route('loan.index')->with('edit', 'Loan Has Been Updated!');
-    //     }
-    //         alert()->error('Error','Opps, Loan Cannot Be Updated!');
-    //         return redirect()->route('loan.index');
-    // }
 
 }
