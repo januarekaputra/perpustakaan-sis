@@ -15,10 +15,10 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->integer('no_anggota')->unique();
+            $table->string('no_anggota')->unique();
             $table->string('nama_anggota', 50);
             $table->enum('jen_kel', ['Laki-Laki', 'Perempuan']);
-            $table->enum('status', ['Guru', 'Siswa']);
+            $table->enum('status', ['Guru', 'Siswa', 'Staff']);
             $table->string('alamat', 100);
             $table->string('email', 100)->nullable();
             $table->string('no_telp', 13)->nullable();

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Book;
 use App\Models\Member;
 use App\Models\Restore;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,9 +34,14 @@ class Loan extends Model
         return $this->belongsTo(Member::class, 'members_id', 'id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
     public function restore()
     {
-        return $this->belongsTo(Restore::class);
+        return $this->belongsTo(Restore::class, 'restores_id', 'id');
     }
 
     public static function kode()

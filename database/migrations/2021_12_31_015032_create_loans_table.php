@@ -16,11 +16,12 @@ class CreateLoansTable extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->string('kode_peminjaman', 50)->unique();
-            $table->foreignId('members_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('members_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('books_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->date('tgl_pinjam');
             $table->date('tgl_pengembalian');
-            $table->enum('keadaan', ['Dipinjam', 'Dikembalikan'])->default('Dipinjam');
+            $table->enum('keadaan', ['Sedang diproses','Dipinjam', 'Dikembalikan'])->default('Sedang diproses');
             $table->timestamps();
         });
     }
@@ -35,5 +36,6 @@ class CreateLoansTable extends Migration
         Schema::dropIfExists('loans');
         Schema::dropIfExists('books');
         Schema::dropIfExists('members');
+        Schema::dropIfExists('users');
     }
 }

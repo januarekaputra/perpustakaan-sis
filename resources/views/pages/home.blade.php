@@ -7,7 +7,61 @@
 @section('content')
 <!-- Header -->
 <header class="text-center">
-    <h1>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url('frontend/images/SIS1.jpg') }}" class="d-block bd-placeholder-img" alt="..." width="1350x" height="500px aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777">
+                
+    
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1 class="text-white">Welcome To Sanur Independent School Library</h1>
+                        <p class="text-white">"Learning For Living"</p>
+                        <p><a class="btn btn-lg" style="background-color: #ff9e53;
+                            color: #ffffff;" href="#books">See Book Collection</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url('frontend/images/SIS2.jpg') }}" class="d-block bd-placeholder-img" alt="..." width="1350x" height="500px aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777">
+    
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="text-white">Welcome To Sanur Independent School Library</h1>
+                        <p class="text-white">"Learning For Living"</p>
+                        <p><a class="btn btn-lg" style="background-color: #ff9e53;
+                            color: #ffffff;" href="#books">See Book Collection</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url('frontend/images/SIS3.jpg') }}" class="d-block bd-placeholder-img" alt="..." width="1350x" height="500px aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777">
+    
+                <div class="container">
+                <div class="carousel-caption text-end">
+                    <h1 class="text-white">Welcome To Sanur Independent School Library</h1>
+                    <p class="text-white">"Learning For Living"</p>
+                    <p><a class="btn btn-lg" style="background-color: #ff9e53;
+                        color: #ffffff;" href="#books">See Book Collection</a></p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    {{-- <h1>
         Welcome To 
         <br>
         Sanur Independent School Library
@@ -17,12 +71,12 @@
     </p>
     <a href="#books" class="btn btn-get-started px-4 mt-4">
         SEE BOOKS
-    </a>
+    </a> --}}
 </header>
 <!-- Main -->
 <main>
 <!-- Statistik -->
-    <div class="container">
+    {{-- <div class="container">
         <section class="section-stats row justify-content-center" id="stats">
             <div class="col-4 col-md-4 stats-detail">
                 <h2>{{ $member }}</h2>
@@ -33,7 +87,7 @@
                 <p>Books</p>
             </div>
         </section>
-    </div>
+    </div> --}}
 <!-- Wisata Populer -->
     <section class="section-popular" id="books">
         <div class="container">
@@ -68,7 +122,7 @@
                 @foreach ($items as $item)
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card-travel align-items-center text-center d-flex flex-column" style="background-image: url('{{ $item->image ? Storage::url($item->image) : '' }}');">
-                            <div class="travel-location bg-dark text-white" style="background-color: rgba(228, 228, 228, 0.7)">
+                            <div class="travel-location bg-dark text-white" style="background-color: rgba(0, 0, 0, 0.7)" hidden="true">
                                 {{ $item->judul }}
                             </div>
                             <div class="travel-button mt-auto">

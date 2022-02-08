@@ -24,7 +24,7 @@
         <form action="{{ route('member.update', $item->no_anggota) }}" method="POST">
           @method('PUT')
           @csrf
-          <div class="form-group">
+          <div class="form-group" hidden="true">
             <label for="no_anggota">ID</label>
             <input id="no_anggota" class="form-control" value="{{ $item->no_anggota }}" type="text" name="no_anggota" readonly>
           </div>
@@ -36,8 +36,8 @@
             <label for="jen_kel" class="form-label">Gender</label>
             <div class="form-check">
               <label class="form-check-label" for="jen_kel">
-                <input type="radio" name="jen_kel" value="Laki-Laki" id="jen_kel" {{$item->jen_kel == 'Laki-Laki'? 'checked' : ''}} > Laki-Laki
-                <input type="radio" name="jen_kel" value="Perempuan" id="jen_kel" {{$item->jen_kel == 'Perempuan'? 'checked' : ''}} > Perempuan
+                <input type="radio" name="jen_kel" value="Laki-Laki" id="jen_kel" {{$item->jen_kel == 'Laki-Laki'? 'checked' : ''}} > Male
+                <input type="radio" name="jen_kel" value="Perempuan" id="jen_kel" {{$item->jen_kel == 'Perempuan'? 'checked' : ''}} > Female
               </label>
             </div>
           </div>
@@ -45,11 +45,13 @@
             <label for="status" class="form-label">Status</label>
             <div class="form-check">
               <label class="form-check-label" for="status">
-                <input type="radio" name="status" value="Guru" id="status" {{$item->status == 'Guru'? 'checked' : ''}} > Guru
-                <input type="radio" name="status" value="Siswa" id="status" {{$item->status == 'Siswa'? 'checked' : ''}} > Siswa
+                <input type="radio" name="status" value="Guru" id="status" {{$item->status == 'Guru'? 'checked' : ''}} > Teacher
+                <input type="radio" name="status" value="Siswa" id="status" {{$item->status == 'Siswa'? 'checked' : ''}} > Student
+                <input type="radio" name="status" value="Staff" id="status" {{$item->status == 'Staff'? 'checked' : ''}} > Staff
               </label>
             </div>
           </div>
+          
           <div class="form-group">
             <label for="alamat">Address</label>
             <input id="alamat" placeholder="Address" class="form-control" value="{{ $item->alamat }}" type="text" name="alamat">

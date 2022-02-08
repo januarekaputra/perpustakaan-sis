@@ -26,12 +26,12 @@ body {
 }
 
 header {
-  padding: 180px 0 165px;
-  margin-top: -90px;
+  /* padding: 180px 0 165px;
+  margin-top: -90px; */
   /* background-image: url(../images/sis.jpg); */
-  background-image: url('https://source.unsplash.com/random/500x500/?school');
   background-size: cover;
 }
+/* background-image: url('https://source.unsplash.com/random/500x500/?school'); */
 
 header h1,
 header p {
@@ -124,7 +124,7 @@ header .btn-get-started:hover {
 }
 
 .section-popular-content .section-popular-travel .travel-location {
-  font-size: 26px;
+  font-size: 15px;
   color: #fff;
 }
 

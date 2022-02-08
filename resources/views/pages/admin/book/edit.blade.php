@@ -24,8 +24,8 @@
         <form action="{{ route('book.update', $item->id) }}" method="POST" enctype="multipart/form-data">
           @method('PUT')
           @csrf
-          <div class="form-group">
-            <label for="kode_buku">ID</label>
+          <div class="form-group" hidden="true">
+            <label for="kode_buku">Book ID</label>
             <input id="kode_buku" class="form-control" value="{{ $item->kode_buku }}" type="text" name="kode_buku" readonly>
           </div>
           <div class="form-group">

@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
     public function index()
     {
-        return view('register.index', [
+        return view('auth.register.index', [
         'title' => 'REGISTER'
         ]);
     }
@@ -33,7 +34,7 @@ class RegisterController extends Controller
         alert()->success('Success','Registration Successfull!! Please Login');
         return redirect('/login')->with('success', 'Registration Successfull!! Please Login');
     }
-    alert()->error('Error','Opps, Member Cannot Be Deleted!');
+    alert()->error('Error','Opps, Registration Failed!!');
     return redirect('/register');
 
     

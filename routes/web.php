@@ -4,13 +4,14 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\LoanController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\DashboardUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +39,18 @@ Route::prefix('admin')
         Route::resource('category', '\App\Http\Controllers\Admin\CategoryController');
         Route::resource('book', '\App\Http\Controllers\Admin\BookController');
         Route::resource('loan', '\App\Http\Controllers\Admin\LoanController');
+        Route::put('/ubah/{id}', [LoanController::class, 'ubah'])->name('ubah');
         Route::get('/print', [LoanController::class, 'print'])->name('print');
-        Route::get('/kembalikan/{id}', [LoanController::class, 'kembalikan']);
         Route::resource('restore', '\App\Http\Controllers\Admin\RestoreController');
+        Route::post('/logout', [LoginController::class, 'logout']);
+    });
+
+    Route::prefix('user')
+    ->namespace('User')
+    ->middleware(['auth', 'user'])
+    ->group(function() { 
+        Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard-user');
+        Route::resource('loan-user', '\App\Http\Controllers\User\LoanUserController');
         Route::post('/logout', [LoginController::class, 'logout']);
     });
 

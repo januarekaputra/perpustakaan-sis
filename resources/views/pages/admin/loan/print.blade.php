@@ -19,12 +19,12 @@
       <b>SANUR INDEPENDENT SCHOOL LIBRARY</b>
     </p>
     
-    <p align="center"><b>LAPORAN DATA PEMINJAMAN</b></p>
+    <p align="center"><b>LOAN DATA REPORT</b></p>
     <table class="static" align="center" rules="all" border="1px" style="width: 95%">
       <thead>
         <tr>
           <th>NO.</th>
-          <th>CODE</th>
+          <th>LOAN CODE</th>
           <th>NAME</th>
           <th>TITLE</th>
           <th>DATE OF LOAN</th>
@@ -37,11 +37,19 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $print->kode_peminjaman }}</td>
-            <td>{{ $print->member->nama_anggota }}</td>
+            @if ($print->user == NULL)
+              <td>{{ $print->member->nama_anggota }}</td>
+            @else
+              <td>{{ $print->user->name }}</td>
+            @endif
             <td>{{ $print->book->judul }}</td>
             <td>{{ $print->tgl_pinjam }}</td>
             <td>{{ $print->tgl_pengembalian}}</td>
-            <td style="color: red">{{ $print->keadaan}}</td>
+            <td style="color: red">
+              @if($print->keadaan == 'Dipinjam')
+                <span>On loan</span>
+              @endif
+            </td>
         </tr>
         @endforeach
       </tbody>

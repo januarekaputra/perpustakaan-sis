@@ -40,7 +40,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>ID</th>
+                  <th>MEMBER ID</th>
                   <th>NAME</th>
                   <th>GENDER</th>
                   <th>STATUS</th>

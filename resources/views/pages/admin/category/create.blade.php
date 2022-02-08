@@ -23,7 +23,7 @@
       <div class="card-body">
         <form action="{{ route('category.store') }}" method="POST">
           @csrf
-          <div class="form-group">
+          <div class="form-group" hidden="true">
             <label for="kode_kategori">Category ID</label>
             <input id="kode_kategori" placeholder="Category ID" class="form-control @error('kode_kategori') is-invalid @enderror" value="{{ $kode_kategori }}" type="text" name="kode_kategori" readonly>
           </div>

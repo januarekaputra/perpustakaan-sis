@@ -7,7 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>SIS LIBRARY ADMIN | {{ $title }}</title>
+    @can('admin')
+        <title>SIS LIBRARY ADMIN | {{ $title }}</title>
+    @endcan
+
+    @can('user')
+        <title>SIS LIBRARY | {{ $title }}</title>
+    @endcan
 
     @include('includes.admin.style')
 

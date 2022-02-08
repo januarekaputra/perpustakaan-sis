@@ -23,7 +23,7 @@
       <div class="card-body">
         <form action="{{ route('book.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
-          <div class="form-group">
+          <div class="form-group" hidden="true">
             <label for="kode_buku">Book ID</label>
             <input id="kode_buku" placeholder="Book ID" class="form-control @error('kode_buku') is-invalid @enderror" value="{{ $kode_buku }}" type="text" name="kode_buku" readonly>
           </div>
@@ -56,8 +56,8 @@
           </div>
           <div class="form-group">
             <label for="category_id" class="form-label">Category</label>
-            <select id="category_id" name="category_id" class="form-control @error('category_id') is-invalid @enderror" value="{{ old('category_id') }}" aria-label="Default select example">
-              <option value="">Pilih Kategori</option>
+            <select id="category_id" name="category_id" class="form-control single @error('category_id') is-invalid @enderror" value="{{ old('category_id') }}" aria-label="Default select example">
+              <option value="">Select Category</option>
               @foreach ($categories as $category)
                   <option value="{{ $category->id }}">
                     {{ $category->nama_kategori }}
@@ -110,3 +110,10 @@
 </div>
 <!-- /.container-fluid -->
 @endsection
+@push('script')
+  <script>
+    $(document).ready(function() {
+      $('.single').select2();
+    });
+  </script>
+@endpush

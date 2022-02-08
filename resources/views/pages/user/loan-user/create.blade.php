@@ -53,12 +53,17 @@
               </tbody>
           </table>
         </div>
-        <form action="{{ route('loan.store') }}" method="POST">
+        <form action="{{ route('loan-user.store') }}" method="POST">
           @csrf
           {{-- buku loan --}}
           <div class="form-group" hidden="true">
             <label for="kode_peminjaman">Loan ID</label>
             <input id="kode_peminjaman" placeholder="Kode Pinjam" class="form-control @error('kode_peminjaman') is-invalid @enderror" value="{{ $kode_peminjaman }}" type="text" name="kode_peminjaman" readonly>
+          </div>
+
+          <div class="form-group" hidden="true">
+            <label for="user_id">Name</label>
+            <input id="user_id" placeholder="Name" class="form-control @error('user_id') is-invalid @enderror" value="{{ Auth()->user()->id }}" type="text" name="user_id" readonly hidden="true">
           </div>
 
           <div class="form-group">
@@ -79,25 +84,7 @@
           </div>
           {{-- end loan --}}
 
-          {{-- member loan --}}
-          <div class="form-group">
-            <label for="members_id" class="form-label">Member</label>
-            <select id="members_id" name="members_id" class="form-control single @error('members_id') is-invalid @enderror" value="{{ old('members_id') }}">
-              <option value="">Select Member</option>
-              @foreach ($members as $member)
-                  <option value="{{ $member->id }}">
-                    {{ $member->nama_anggota }} 
-                  </option>
-              @endforeach
-              @error('members_id')
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-            @enderror
-            </select>
-          </div>
-
-          <div class="form-group">
+          <div class="form-group" hidden="true">
             <label for="tgl_pinjam">Date of Loan</label>
             <input id="tgl_pinjam" placeholder="Date Of Loan" class="form-control @error('tgl_pinjam') is-invalid @enderror" value="{{ $tgl_pinjam }}" type="date" name="tgl_pinjam" readonly>
             @error('tgl_pinjam')
@@ -106,8 +93,7 @@
               </span>
             @enderror
           </div>
-
-          <div class="form-group">
+          <div class="form-group" hidden="true">
             <label for="tgl_pengembalian">Date of Return</label>
             <input id="tgl_pengembalian" placeholder="Date Of Return" class="form-control @error('tgl_pengembalian') is-invalid @enderror" value="{{ $tgl_pengembalian }}" type="date" name="tgl_pengembalian" readonly>
             @error('tgl_pengembalian')
@@ -116,12 +102,6 @@
               </span>
             @enderror
           </div>
-
-          <div class="form-group" hidden="true">
-            <label for="keadaan">Conditions</label>
-            <input id="keadaan" placeholder="Conditions" class="form-control @error('keadaan') is-invalid @enderror" value="Dipinjam" type="text" name="keadaan" readonly >
-          </div>
-
           {{-- end loan --}}
           <button type="submit" class="btn btn-success btn-icon-split">
             <span class="icon text-white-50">

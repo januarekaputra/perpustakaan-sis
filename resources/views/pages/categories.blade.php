@@ -24,6 +24,7 @@ Sanur Independent School Library | Categories
                                 </form>
                             </div>
                         </div>
+                        @if ($categories->count())
                         <div class="container">
                             <div class="row">
                                 @foreach ($categories as $category)
@@ -42,11 +43,15 @@ Sanur Independent School Library | Categories
                                 @endforeach
                             </div>
                         </div>
+                        @else
+                        <p class="text-center fs-4 text-black">No Category Found!</p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
     <div class="d-flex justify-content-center">
         {{ $categories->links() }}
     </div>

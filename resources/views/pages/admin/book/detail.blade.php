@@ -6,7 +6,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Book</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data From {{ $item->judul }}</h1>
     </div>
 
     @if ($errors->any())
@@ -26,7 +26,7 @@
             <img src="{{ Storage::url($item->image) }}" alt="image" style="width: 150px" class="img-thumbnail">
           </tr>
           <tr>
-            <th>CODE</th>
+            <th>BOOK ID</th>
             <td>{{ $item->kode_buku }}</td>
           </tr>
           <tr>
@@ -48,7 +48,7 @@
           <tr>
             <th>STOCK</th>
             @if ($item->jumlah <= 0)
-            <td>Stock Habis</td>
+            <td>OUT OF STOCK</td>
             @else 
             <td>{{ $item->jumlah }}</td>
             @endif

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use DateTime;
 use App\Models\Book;
@@ -11,26 +11,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Restore;
 
-class LoanController extends Controller
+class LoanUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function print()
-    {
-        $prints = Loan::where('keadaan', 'Dipinjam')->get();
-        return view('pages.admin.loan.print', [
-            'prints' => $prints,
-        ]);
-    }
 
     public function index()
     {
-        $items = Loan::with(['member', 'book'])->get();
+        $items = Loan::where('user_id', auth()->user()->id)->get();
 
-        return view('pages.admin.loan.index', [
+        return view('pages.user.loan-user.index', [
             'items' => $items,
             "title" => 'LOAN'
         ]);
@@ -46,17 +39,15 @@ class LoanController extends Controller
         $books = Book::where('jumlah', '>', 0)->get();
         $members = Member::get();
         $users = User::get();
-        $loans = Loan::get();
         $tgl_pinjam = date('Y-m-d');
         $week = mktime(0,0,0,date("n"), date("j") + 7, date("Y"));
         $tgl_pengembalian = date('Y-m-d', $week);
         $kode_peminjaman = Loan::kode();
 
-        return view('pages.admin.loan.create', [
+        return view('pages.user.loan-user.create', [
             'books' => $books,
             'members' => $members,
             'users' => $users,
-            'loans' => $loans,
             "title" => 'ADD LOAN',
             'kode_peminjaman' => $kode_peminjaman,
             'tgl_pinjam' => $tgl_pinjam,
@@ -74,11 +65,10 @@ class LoanController extends Controller
     {
         // var_dump($_POST);
         $validatedData = $request->validate([
-            'members_id' => 'required|integer|exists:members,id',
+            'user_id' => 'required|integer|exists:users,id',
             'kode_peminjaman' => ['required', 'unique:loans'.$loan->id],
             'tgl_pinjam' => ['required', 'date'],
             'tgl_pengembalian' => 'required|date',
-            'keadaan' => 'required',
             'books_id' => 'required|integer|exists:books,id'
         ]);
 
@@ -88,10 +78,10 @@ class LoanController extends Controller
 
         if ($create) {
             alert()->success('Success','New Loan Has Been Added!');
-            return redirect()->route('loan.index')->with('success', 'New Loan Has Been Added!');
+            return redirect()->route('loan-user.index')->with('success', 'New Loan Has Been Added!');
         } else {
             alert()->error('Error','Opps, New Loan Cannot Be Added!');
-            return redirect()->route('loan.index');
+            return redirect()->route('loan-user.index');
         }
     }
 
@@ -114,35 +104,12 @@ class LoanController extends Controller
      */
     public function edit($id)
     {
-        $item = Loan::findOrFail($id);
+        // $item = Loan::findOrFail($id);
 
-        return view('pages.admin.loan.edit', [
-            'item' => $item,
-            'title' => 'LOAN',
-        ]);
-    }
-
-    public function ubah(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'keadaan' => 'required'
-        ]);
-
-        $item = Loan::findOrFail($id);
-
-        // $ubah = $item->update($validatedData);
-        if($validatedData) {
-            $ubah = Loan::where('id', $request['id'])->update(['keadaan' => $request['keadaan']]);
-            
-            if($ubah) {
-                alert()->success('Success', 'Loan Has Been Updated!');
-                return redirect()->route('loan.index')->with('edit', 'Loan Has Been Updated!');
-            }
-                alert()->error('Error','Opps, Loan Cannot Be Updated!');
-                return redirect()->route('loan.index');
-
-        }
-
+        // return view('pages.admin.loan.edit', [
+        //     'item' => $item,
+        //     'title' => 'LOAN',
+        // ]);
     }
 
     /**

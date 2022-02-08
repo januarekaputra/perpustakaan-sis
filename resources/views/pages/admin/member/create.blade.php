@@ -14,8 +14,8 @@
         <form action="{{ route('member.store') }}" method="POST">
           @csrf
           <div class="form-group @error('no_anggota') is-invalid @enderror">
-            <label for="no_anggota">ID</label>
-            <input id="no_anggota" placeholder="ID" class="form-control @error('no_anggota') is-invalid @enderror" value="{{ old('no_anggota') }}" type="text" name="no_anggota" required autofocus>
+            <label for="no_anggota">Member ID</label>
+            <input id="no_anggota" placeholder="Member ID" class="form-control @error('no_anggota') is-invalid @enderror" value="{{ old('no_anggota') }}" type="text" name="no_anggota" required autofocus>
             @error('no_anggota')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -31,18 +31,19 @@
               </div>
             @enderror
           </div>
+          
           <div class="form-group">
             <label for="jen_kel" class="form-label">Gender</label>
             <div class="form-check">
               <input class="form-check-input @error('jen_kel') is-invalid @enderror" type="radio" name="jen_kel" id="jen_kel" value="Laki-Laki" {{ old('jen_kel') == 'Laki-Laki' ? 'checked' : '' }} required>
               <label class="form-check-label" for="jen_kel">
-                Laki-Laki
+                Male
               </label>
             </div>
             <div class="form-check">
               <input class="form-check-input @error('jen_kel') is-invalid @enderror" type="radio" name="jen_kel" id="jen_kel" value="Perempuan" {{ old('jen_kel') == 'Perempuan' ? 'checked' : '' }} required>
               <label class="form-check-label" for="jen_kel">
-                Perempuan
+                Female
               </label>
             </div>
             @error('jen_kel')
@@ -51,18 +52,25 @@
               </div>
             @enderror
           </div>
+          
           <div class="form-group">
             <label for="status" class="form-label">Status</label>
             <div class="form-check">
               <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Guru" {{ old('status') == 'Guru' ? 'checked' : '' }}>
               <label class="form-check-label" for="status">
-                Guru
+                Teacher
               </label>
             </div>
             <div class="form-check">
               <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Siswa" {{ old('status') == 'Siswa' ? 'checked' : '' }}>
               <label class="form-check-label" for="status">
-                Siswa
+                Student
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Staff" {{ old('status') == 'Staff' ? 'checked' : '' }}>
+              <label class="form-check-label" for="status">
+                Staff
               </label>
             </div>
             @error('status')

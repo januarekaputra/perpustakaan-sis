@@ -6,7 +6,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Member</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{ $item->nama_anggota }}'s Personal Data</h1>
     </div>
 
     @if ($errors->any())
@@ -23,7 +23,7 @@
       <div class="card-body">
         <table class="table table-bordered">
           <tr>
-            <th>ID</th>
+            <th>MEMBER ID</th>
             <td>{{ $item->no_anggota }}</td>
           </tr>
           <tr>

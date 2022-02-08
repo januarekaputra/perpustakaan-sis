@@ -18,13 +18,13 @@
       
 
     @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success mt-3" role="alert">
           {{ session('success') }}
         </div>
     @endif
 
     @if (session()->has('delete'))
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger mt-3" role="alert">
           {{ session('delete') }}
         </div>
     @endif
@@ -48,46 +48,44 @@
                 @forelse ($items as $item)
                 <tr>
                   <td>{{ $item->kode_peminjaman }}</td>
-                  <td>{{ $item->member->nama_anggota }}</td>
+                  @if ($item->user == NULL)
+                    <td>{{ $item->member->nama_anggota }}</td>
+                  @else
+                    <td>{{ $item->user->name }}</td>
+                  @endif
                   <td>{{ $item->book->judul }}</td>
                   <td>
                     @if($item->keadaan == 'Dipinjam')
-                      <label class="badge badge-danger">Dipinjam</label>
-                    @else
-                      <label class="badge badge-success">Kembali</label>
+                      <label class="badge badge-danger">On loan</label>
                     @endif
-                    {{-- <label class="badge badge-info">{{ $item->keadaan }}</label> --}}
+
+                    @if($item->keadaan == 'Dikembalikan')
+                      <label class="badge badge-success">It's been returned</label>
+                    @endif
+                    
+                    @if ($item->keadaan == 'Sedang diproses')
+                      <label class="badge badge-info">Waiting for confirmation</label>
+                    @endif
                     
                   </td>
-                  {{-- <td>
-                    @if ($item->keadaan == "Belum Dikembalikan")
-                            <a href="{{ route('restore') }}" class="btn btn-success btn-icon-split btn-sm">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                <span class="text">Dikembalikan</span>
-                            </a>
-                    @else
-                      <a href="{{ route('loan') }}" class="btn btn-danger btn-icon-split btn-sm">
-                        <span class="icon text-white-50">
-                          <i class="fas fa-check"></i>
-                        </span>
-                        <span class="text">Dikembalikan</span>
-                      </a>
-                    @endif
-                  </td> --}}
+
                   <td>{{ $item->tgl_pinjam }}</td>
                   <td>{{ $item->tgl_pengembalian}}</td>
                   <td>
+                    @if($item->keadaan == 'Sedang diproses')
+                    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#insertModal">
+                      <i class="fa fa-eye"></i>
+                      <span class="text">View</span>
+                    </a>
+                    {{-- <a href="{{ route('loan.edit', $item->id) }}" class="btn btn-info">
+                      <i class="fa fa-eye"></i>
+                      <span class="text">View</span>
+                    </a> --}}
+                    @else
+                      
+                    @endif
+
                     @if($item->keadaan == 'Dipinjam')
-                      {{-- <a href="kembalikan/{{$item->id}}" class="btn btn-warning" onclick="return confirm('Anda yakin data ini sudah kembali?')">
-                        <i class="fas fa-arrow-circle-left"></i>
-                        <span class="text">Restore</span>
-                      </a> --}}
-                      {{-- <a href="{{ route('loan.edit', $item->id) }}" class="btn btn-warning">
-                        <i class="fas fa-arrow-circle-left"></i>
-                        <span class="text">Restore</span>
-                      </a> --}}
                       <form action="{{ route('loan.update', $item->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -126,4 +124,35 @@
 
 </div>
 <!-- /.container-fluid -->
+{{-- Modal --}}
+<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="insertModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="insertModal">Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{{ route('ubah', $item->id) }}" method="POST" enctype="multipart/form-data">
+          @method('PUT')
+          @csrf
+          <div class="form-group">
+            <div class="form-check">
+              <label class="form-check-label" for="keadaan">
+                <input type="radio" name="keadaan" value="Sedang diproses" id="keadaan" {{$item->keadaan == 'Sedang diproses'? 'checked' : ''}} > Waiting for confirmation
+                <input type="radio" name="keadaan" value="Dipinjam" id="keadaan" {{$item->keadaan == 'Dipinjam'? 'checked' : ''}} > On loan
+              </label>
+            </div>
+          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

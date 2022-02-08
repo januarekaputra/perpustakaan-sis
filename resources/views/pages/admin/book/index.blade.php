@@ -36,7 +36,7 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>BOOK ID</th>
                   <th>TITLE</th>
                   <th>CATEGORY</th>
                   <th>STOCK</th>
@@ -53,7 +53,7 @@
                   <td>{{ $item->category->nama_kategori }}</td>
                   <td>
                     @if ($item->jumlah <= 0)
-                      Stock Habis
+                      OUT OF STOCK
                     @else 
                       {{ $item->jumlah }}
                     @endif

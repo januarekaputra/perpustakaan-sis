@@ -9,6 +9,8 @@
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     </div>
 
+    @can('admin')
+
     <!-- Content Row -->
     <div class="row">
 
@@ -19,7 +21,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Anggota</div>
+                                Member</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $member }}</div>
                         </div>
                         <div class="col-auto">
@@ -37,7 +39,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Buku</div>
+                                Book</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $book }}</div>
                         </div>
                         <div class="col-auto">
@@ -54,7 +56,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Peminjaman
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Loan
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
@@ -77,7 +79,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pengembalian</div>
+                                Return</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $restore }}</div>
                         </div>
                         <div class="col-auto">
@@ -89,17 +91,18 @@
         </div>
 
     </div>
-
+    
     <div class="card shadow mb-4">
         <div class="card-header">
             <h6 class="m-0 font-weight-bold text-primary">Welcome Back!!</h6>
             </div>
             <div class="card-body">
-                <p>Selamat Datang, <b class="text-uppercase ">{{ Auth::user()->name }}, </b></p>
-                <p class="mb-0">Library Sanur Independent School <br> Jangan Berikan Email dan Password Anda pada Siapapun</p>
+                <p>Welcome, <b class="text-uppercase ">{{ Auth::user()->name }} </b></p>
+                <p class="mb-0">Sanur Independent School Library<br> Don't Give Your Email and Password to Anyone</p>
             </div>
         </div>
     </div>
 </div>
+@endcan
 <!-- /.container-fluid -->
 @endsection

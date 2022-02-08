@@ -22,7 +22,7 @@
               <thead>
                 <tr>
                   <th>NO</th>
-                  <th>CODE</th>
+                  <th>LOAN CODE</th>
                   <th>NAME</th>
                   <th>TITLE</th>
                   <th>DATE OF LOAN</th>
@@ -36,16 +36,21 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->loan->kode_peminjaman }}</td>
-                  <td>{{ $item->loan->member->nama_anggota }}</td>
+                  @if ($item->loan->user == NULL)
+                    <td>{{ $item->loan->member->nama_anggota }}</td>
+                  @else
+                    <td>{{ $item->loan->user->name }}</td>
+                  @endif
+                  {{-- <td>{{ $item->loan->member->nama_anggota }}</td> --}}
                   <td>{{ $item->loan->book->judul }}</td>
                   <td>{{ $item->loan->tgl_pinjam }}</td>
                   <td>{{ $item->loan->tgl_pengembalian }}</td>
                   <td>{{ $tgl_kembali }}</td>
                   <td>
                     @if ($item->loan->tgl_pengembalian < $tgl_kembali)
-                      <label class="badge badge-danger">Terlambat</label>
+                      <label class="badge badge-danger">Late</label>
                     @else
-                      <label class="badge badge-success">Kembali</label>
+                      <label class="badge badge-success">It's been returned</label>
                     @endif
                   </td>
                 </tr>
