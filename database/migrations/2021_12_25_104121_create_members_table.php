@@ -15,7 +15,7 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string('no_anggota')->unique();
+            $table->string('no_anggota', 11)->unique();
             $table->string('nama_anggota', 50);
             $table->enum('jen_kel', ['Laki-Laki', 'Perempuan']);
             $table->enum('status', ['Guru', 'Siswa', 'Staff']);

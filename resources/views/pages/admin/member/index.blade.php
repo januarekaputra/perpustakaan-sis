@@ -54,8 +54,25 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->no_anggota }}</td>
                   <td>{{ $item->nama_anggota }}</td>
-                  <td>{{ $item->jen_kel }}</td>
-                  <td>{{ $item->status}}</td>
+                  <td>
+                    @if($item->jen_kel == 'Laki-Laki')
+                      Male
+                    @endif
+                    @if($item->jen_kel == 'Perempuan')
+                      Female
+                    @endif
+                  </td>
+                  <td>
+                    @if($item->status == 'Guru')
+                      Teacher
+                    @endif
+                    @if($item->status == 'Siswa')
+                      Student
+                    @endif
+                    @if($item->status == 'Staff')
+                      Staff
+                    @endif
+                  </td>
                   <td>{{ $item->alamat }}</td>
                   <td>
                     <a href="{{ route('member.show', $item->no_anggota) }}" class="btn btn-info">

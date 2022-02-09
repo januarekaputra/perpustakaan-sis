@@ -32,11 +32,28 @@
           </tr>
           <tr>
             <th>GENDER</th>
-            <td>{{ $item->jen_kel }}</td>
+            <td>
+              @if($item->jen_kel == 'Laki-Laki')
+                Male
+              @endif
+              @if($item->jen_kel == 'Perempuan')
+                Female
+              @endif
+            </td>
           </tr>
           <tr>
             <th>STATUS</th>
-            <td>{{ $item->status }}</td>
+            <td>
+              @if($item->status == 'Guru')
+                Teacher
+              @endif
+              @if($item->status == 'Siswa')
+                Student
+              @endif
+              @if($item->status == 'Staff')
+                Staff
+              @endif
+            </td>
           </tr>
           <tr>
             <th>ADDRESS</th>
