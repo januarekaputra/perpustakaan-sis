@@ -27,6 +27,17 @@
             <label for="kode_buku">Book ID</label>
             <input id="kode_buku" placeholder="Book ID" class="form-control @error('kode_buku') is-invalid @enderror" value="{{ $kode_buku }}" type="text" name="kode_buku" readonly>
           </div>
+
+          <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input id="isbn" placeholder="ISBN" class="form-control @error('isbn') is-invalid @enderror" value="{{ old('isbn') }}" type="text" name="isbn" autofocus>
+            @error('isbn')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+            @enderror
+          </div>
+
           <div class="form-group">
             <label for="judul">Title</label>
             <input id="judul" placeholder="Title" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul') }}" type="text" name="judul" autofocus>

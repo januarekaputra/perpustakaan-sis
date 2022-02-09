@@ -28,6 +28,12 @@
             <label for="kode_buku">Book ID</label>
             <input id="kode_buku" class="form-control" value="{{ $item->kode_buku }}" type="text" name="kode_buku" readonly>
           </div>
+
+          <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input id="isbn" placeholder="ISBN" class="form-control" value="{{ $item->isbn }}" type="text" name="isbn">
+          </div>
+
           <div class="form-group">
             <label for="judul">Title</label>
             <input id="judul" placeholder="Title" class="form-control" value="{{ $item->judul }}" type="text" name="judul">

@@ -49,6 +49,18 @@ Sanur Independent School Library | DETAIL
                             <tbody>
                                 <tr>
                                     <th width="50%">
+                                        ISBN
+                                    </th>
+                                    <td width="50%" class="text-end">
+                                        @if ($item->isbn == '')
+                                        <td>-</td>
+                                        @else 
+                                        <td>{{ $item->isbn }}</td>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="50%">
                                         Author
                                     </th>
                                     <td width="50%" class="text-end">
@@ -69,7 +81,7 @@ Sanur Independent School Library | DETAIL
                                     </th>
                                     <td width="50%" class="text-end">
                                         @if ($item->jumlah <= 0)
-                                            Stock Habis
+                                            OUT OF STOCK
                                         @else 
                                         {{ $item->jumlah }}
                                         @endif

@@ -73,14 +73,14 @@
                   <td>{{ $item->tgl_pengembalian}}</td>
                   <td>
                     @if($item->keadaan == 'Sedang diproses')
-                    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#insertModal">
-                      <i class="fa fa-eye"></i>
-                      <span class="text">View</span>
-                    </a>
-                    {{-- <a href="{{ route('loan.edit', $item->id) }}" class="btn btn-info">
+                    {{-- <a href="#" class="btn btn-info" data-toggle="modal" data-target="#insertModal">
                       <i class="fa fa-eye"></i>
                       <span class="text">View</span>
                     </a> --}}
+                      <a href="{{ route('loan.edit', $item->id) }}" class="btn btn-info">
+                        <i class="fa fa-eye"></i>
+                        <span class="text">View</span>
+                      </a>
                     @else
                       
                     @endif

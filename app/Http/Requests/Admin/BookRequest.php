@@ -26,6 +26,7 @@ class BookRequest extends FormRequest
     {
         return [
             'kode_buku' => 'required', 'unique:books'.$book->id,
+            'isbn' => ['max:15'],
             'judul' => ['required', 'max:100'],
             'pengarang' => ['required', 'max:50'],
             'penerbit' => ['required', 'max:50'],

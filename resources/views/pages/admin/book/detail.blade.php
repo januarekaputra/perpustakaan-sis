@@ -30,6 +30,14 @@
             <td>{{ $item->kode_buku }}</td>
           </tr>
           <tr>
+            <th>ISBN</th>
+              @if ($item->isbn == '')
+              <td>-</td>
+              @else 
+              <td>{{ $item->isbn }}</td>
+              @endif
+          </tr>
+          <tr>
             <th>TITLE</th>
             <td>{{ $item->judul }}</td>
           </tr>
