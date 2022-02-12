@@ -53,9 +53,9 @@ Sanur Independent School Library | DETAIL
                                     </th>
                                     <td width="50%" class="text-end">
                                         @if ($item->isbn == '')
-                                        <td>-</td>
+                                        -
                                         @else 
-                                        <td>{{ $item->isbn }}</td>
+                                        {{ $item->isbn }}
                                         @endif
                                     </td>
                                 </tr>

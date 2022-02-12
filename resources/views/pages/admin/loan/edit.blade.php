@@ -32,10 +32,13 @@
               </label>
             </div>
           </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
+          <hr>
+              <button type="submit" class="btn btn-primary btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-check"></i>
+                </span>
+                <span class="text">Update</span>
+              </button>
         </form>
       </div>
     </div>

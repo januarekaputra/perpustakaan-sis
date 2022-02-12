@@ -8,7 +8,7 @@ class CategoryController extends Controller
 {
     public function index() 
     {
-      $categories = Category::latest()->filter(request(['search']))->paginate(6)->withQueryString();
+      $categories = Category::latest()->filter(request(['search']))->paginate(12)->withQueryString();
 
       return view('pages.categories', [
         'title' => 'All Categories',

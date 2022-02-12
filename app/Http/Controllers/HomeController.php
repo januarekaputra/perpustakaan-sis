@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index() 
     {
-        $items = Book::with(['category'])->latest()->filter(request(['search', 'category']))->paginate(8)->withQueryString();
+        $items = Book::with(['category'])->latest()->filter(request(['search', 'category']))->paginate(16)->withQueryString();
 
         $title = '';
         if(request('category')) {
