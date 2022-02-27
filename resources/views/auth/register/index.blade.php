@@ -171,8 +171,24 @@
                                   </div>
                               </div>
                               <div class="form-group">
+                                <input type="text" class="form-control form-control-user @error('address') is-invalid @enderror" id="address" name="address" placeholder="Address" required value="{{ old('address') }}">
+                                @error('address')
+                                  <div class="invalid-feedback">
+                                    {{ $message }}
+                                  </div>
+                                @enderror
+                              </div>
+                              <div class="form-group">
                                 <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" required value="{{ old('email') }}">
                                 @error('email')
+                                  <div class="invalid-feedback">
+                                    {{ $message }}
+                                  </div>
+                                @enderror
+                              </div>
+                              <div class="form-group">
+                                <input type="number" class="form-control form-control-user @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="Phone Number" required value="{{ old('phone') }}">
+                                @error('phone')
                                   <div class="invalid-feedback">
                                     {{ $message }}
                                   </div>
@@ -186,7 +202,7 @@
                                   </div>
                                 @enderror
                               </div>
-                              <div class="form-group row">
+                              {{-- <div class="form-group row">
                                 <div class="form-check col-sm-4 mb-3 mb-sm-0">
                                   <input class="form-check-input @error('roles') is-invalid @enderror" type="radio" name="roles" id="roles" value="User" {{ old('roles') == 'User' ? 'checked' : '' }} required>
                                   <label class="form-check-label" for="roles">
@@ -204,12 +220,12 @@
                                     {{ $message }}
                                   </div>
                                 @enderror
-                              </div>
+                              </div> --}}
                               <button class="btn btn-primary btn-user btn-block" type="submit">Register!</button>
                               <hr>
                           </form>
                           <div class="text-center">
-                              <a class="small" href="/login">Already have an account? Login!</a>
+                              <a class="small text-decoration-none" href="/login">Already have an account? Login!</a>
                           </div>
                       </div>
                   </div>

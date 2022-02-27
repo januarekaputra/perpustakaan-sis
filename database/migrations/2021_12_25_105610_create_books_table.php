@@ -25,7 +25,6 @@ class CreateBooksTable extends Migration
             $table->integer('jumlah');
             $table->string('rak', 20);
             $table->text('image');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

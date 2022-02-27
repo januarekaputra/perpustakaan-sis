@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Sanur Independent School Library
+{{ trans('home.title.sub') }}
 @endsection
 
 @section('content')
@@ -20,10 +20,10 @@
     
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1 class="text-white">Welcome To Sanur Independent School Library</h1>
+                        <h1 class="text-white">{{ trans('home.pic.title') }}</h1>
                         <p class="text-white">"Learning For Living"</p>
                         <p><a class="btn btn-lg" style="background-color: #ff9e53;
-                            color: #ffffff;" href="#books">See Book Collection</a></p>
+                            color: #ffffff;" href="#books">{{ trans('home.pic.button') }}</a></p>
                     </div>
                 </div>
             </div>
@@ -32,10 +32,10 @@
     
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1 class="text-white">Welcome To Sanur Independent School Library</h1>
+                        <h1 class="text-white">{{ trans('home.pic.title') }}</h1>
                         <p class="text-white">"Learning For Living"</p>
                         <p><a class="btn btn-lg" style="background-color: #ff9e53;
-                            color: #ffffff;" href="#books">See Book Collection</a></p>
+                            color: #ffffff;" href="#books">{{ trans('home.pic.button') }}</a></p>
                     </div>
                 </div>
             </div>
@@ -44,10 +44,10 @@
     
                 <div class="container">
                 <div class="carousel-caption text-end">
-                    <h1 class="text-white">Welcome To Sanur Independent School Library</h1>
+                    <h1 class="text-white">{{ trans('home.pic.title') }}</h1>
                     <p class="text-white">"Learning For Living"</p>
                     <p><a class="btn btn-lg" style="background-color: #ff9e53;
-                        color: #ffffff;" href="#books">See Book Collection</a></p>
+                        color: #ffffff;" href="#books">{{ trans('home.pic.button') }}</a></p>
                 </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center section-popular-heading">
-                    <h2>Book Collection</h2>
+                    <h2>{{ trans('home.detail.detail') }}</h2>
                     <p>
                         {{ $title }}
                     </p>
@@ -108,9 +108,9 @@
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}">
+                    <input type="text" class="form-control" placeholder="{{ trans('home.detail.search') }}..." name="search" value="{{ request('search') }}">
                     <button class="btn btn-search" style="background-color: #ff9e53;
-                    color: #ffffff;" type="submit">Search</button>
+                    color: #ffffff;" type="submit">{{ trans('home.detail.search') }}</button>
                 </div>
             </form>
         </div>
@@ -127,7 +127,7 @@
                             </div>
                             <div class="travel-button mt-auto">
                                 <a href="{{ route('detail', $item->slug) }}" class="btn btn-travel-details px-4">
-                                    VIEW DETAILS
+                                    {{ trans('home.detail.button') }}
                                 </a>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
         </div>
     </section>
     @else
-    <p class="text-center fs-4 text-white">No Book Found!</p>
+    <p class="text-center fs-4 text-white">{{ trans('home.detail.fail') }}</p>
     @endif
 
     <div class="d-flex justify-content-center">

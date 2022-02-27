@@ -17,8 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('kode_kategori', 50)->unique();
             $table->string('nama_kategori', 30);
-            $table->string('slug');
-            $table->softDeletes();
+            $table->string('slug', 30);
             $table->timestamps();
         });
     }

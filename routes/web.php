@@ -24,6 +24,8 @@ use App\Http\Controllers\User\DashboardUserController;
 |
 */
 
+Route::get('/localization/{language}', '\App\Http\Controllers\LocalizationController')->name('localization.switch');
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
@@ -36,6 +38,7 @@ Route::prefix('admin')
     ->group(function() { 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('member', '\App\Http\Controllers\Admin\MemberController');
+        Route::resource('user', '\App\Http\Controllers\Admin\UserController');
         Route::resource('category', '\App\Http\Controllers\Admin\CategoryController');
         Route::resource('book', '\App\Http\Controllers\Admin\BookController');
         Route::resource('loan', '\App\Http\Controllers\Admin\LoanController');

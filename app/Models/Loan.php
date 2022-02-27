@@ -41,7 +41,7 @@ class Loan extends Model
 
     public function restore()
     {
-        return $this->belongsTo(Restore::class, 'restores_id', 'id');
+        return $this->hasMany(Restore::class, 'restores_id', 'id');
     }
 
     public static function kode()

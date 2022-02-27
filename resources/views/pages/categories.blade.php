@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Sanur Independent School Library | Categories
+{{ trans('category.title.sub') }} | Categories
 @endsection
 
 @section('content')
@@ -12,14 +12,14 @@ Sanur Independent School Library | Categories
             <div class="row">
                 <div class="col-p-0">
                     <div class="card card-details card-right">
-                        <h1 class="mb-5 text-center" style="font-size: 30px; font-weight: bold">All Categories</h1>
+                        <h1 class="mb-5 text-center" style="font-size: 30px; font-weight: bold">{{ trans('category.menu.categories') }}</h1>
                         <div class="row justify-content-center mb-3">
                             <div class="col-lg-6">
                                 <form action="/categories">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}">
+                                        <input type="text" class="form-control" placeholder="{{ trans('category.menu.search') }}..." name="search" value="{{ request('search') }}">
                                         <button class="btn btn-search" style="background-color: #ff9e53;
-                                        color: #ffffff;" type="submit">Search</button>
+                                        color: #ffffff;" type="submit">{{ trans('category.menu.search') }}</button>
                                     </div>
                                 </form>
                             </div>
@@ -44,7 +44,7 @@ Sanur Independent School Library | Categories
                             </div>
                         </div>
                         @else
-                        <p class="text-center fs-4 text-black">No Category Found!</p>
+                        <p class="text-center fs-4 text-black">{{ trans('category.menu.fail') }}</p>
                         @endif
                     </div>
                 </div>

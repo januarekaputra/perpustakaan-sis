@@ -38,17 +38,19 @@
             <label for="judul">Title</label>
             <input id="judul" placeholder="Title" class="form-control" value="{{ $item->judul }}" type="text" name="judul">
           </div>
+
           <div class="form-group">
             <label for="pengarang">Author</label>
             <input id="pengarang" placeholder="Author" class="form-control" value="{{ $item->pengarang }}" type="text" name="pengarang">
           </div>
+          
           <div class="form-group">
             <label for="penerbit">Publisher</label>
             <input id="penerbit" placeholder="Publisher" class="form-control" value="{{ $item->penerbit }}" type="text" name="penerbit">
           </div>
           <div class="form-group">
             <label for="category_id" class="form-label">Category</label>
-            <select id="category_id" name="category_id" class="form-control @error('category_id') is-invalid @enderror" aria-label="Default select example">
+            <select id="category_id" name="category_id" class="form-control single @error('category_id') is-invalid @enderror" aria-label="Default select example">
               @foreach ($categories as $category)
                 <option value="{{ $category->id }}" 
                   @if ($category->id === $item->category_id)
@@ -84,3 +86,11 @@
 </div>
 <!-- /.container-fluid -->
 @endsection
+
+@push('script')
+  <script>
+    $(document).ready(function() {
+      $('.single').select2();
+    });
+  </script>
+@endpush

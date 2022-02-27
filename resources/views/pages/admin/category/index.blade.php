@@ -41,6 +41,11 @@
                   <td>{{ $item->kode_kategori }}</td>
                   <td>{{ $item->nama_kategori }}</td>
                   <td>
+                    <a href="{{ route('category.edit', $item->id) }}" class="btn btn-warning">
+                      <i class="fa fa-pencil-alt"></i>
+                      
+                    </a>
+                    
                     <form action="{{ route('category.destroy', $item->id) }}" method="POST">
                       @csrf
                       @method('delete')

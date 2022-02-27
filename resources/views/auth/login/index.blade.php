@@ -25,7 +25,7 @@
 
   </head>
   
-  <body>
+  <body style="background-color: #071c4d">
     {{-- <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #071c4d">
       <div class="container-fluid">
@@ -127,7 +127,11 @@
                                         <input type="password" class="form-control form-control-user @error('username') is-invalid @enderror" id="password" placeholder="Password" name="password">
                                       </div>
                                       <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
+                                      <hr>
                                   </form>
+                                  <div class="text-center">
+                                    <a class="small text-decoration-none" href="/register">Register to Join a Member</a>
+                                  </div>
                               </div>
                           </div>
                       </div>

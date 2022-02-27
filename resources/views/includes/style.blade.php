@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ url('frontend/styles/main.css') }}">
     <link href="{{ url('frontend/style/signin.css') }}" rel="stylesheet">
     <link href="{{ url('frontend/style/carousel.css') }}" rel="stylesheet">
+    <link href="{{ url('frontend/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {

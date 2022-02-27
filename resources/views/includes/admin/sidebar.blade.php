@@ -66,6 +66,14 @@
             <span>Member</span>
         </a>
     </li>
+
+    <!-- Nav Item -->
+    <li class="nav-item {{ Route::is('user*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('user.index') }}">
+            <i class="fa-solid fa-user"></i>
+            <span>User Register</span>
+        </a>
+    </li>
   
     <!-- Nav Item - Book Collapse Menu -->
     <li class="nav-item {{ Route::is('category*', 'book*') ? 'active' : '' }}">
@@ -101,7 +109,7 @@
         <div id="collapseTransaction" class="collapse" aria-labelledby="headingTransaction" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item {{ Route::is('loan*') ? 'active' : '' }}" href="{{ route('loan.index') }}">Loans</a>
-                <a class="collapse-item {{ Route::is('restore*') ? 'active' : '' }}" href="{{ route('restore.index') }}">Returns</a>
+                <a class="collapse-item {{ Route::is('restore*') ? 'active' : '' }}" href="{{ route('restore.index') }}">Restores</a>
             </div>
         </div>
     </li>

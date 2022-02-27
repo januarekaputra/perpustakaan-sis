@@ -17,7 +17,7 @@ class HomeController extends Controller
         $title = '';
         if(request('category')) {
             $category = Category::firstWhere('slug', request('category'));
-            $title = 'of ' . $category->nama_kategori;
+            $title = $category->nama_kategori;
         }
         return view('pages.home', [
             'member' => Member::count(),

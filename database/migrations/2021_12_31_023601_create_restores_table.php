@@ -17,7 +17,7 @@ class CreateRestoresTable extends Migration
             $table->id();
             $table->foreignId('loans_id')->constrained()->cascadeOnDelete();
             $table->date('tgl_kembali');
-            $table->enum('status', ['Kembali', 'Terlambat'])->default('Kembali');
+            $table->string('status', 10)->default('Kembali');
             $table->timestamps();
         });
     }

@@ -124,35 +124,5 @@
 
 </div>
 <!-- /.container-fluid -->
-{{-- Modal --}}
-<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="insertModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="insertModal">Conditions</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="{{ route('ubah', $item->id) }}" method="POST" enctype="multipart/form-data">
-          @method('PUT')
-          @csrf
-          <div class="form-group">
-            <div class="form-check">
-              <label class="form-check-label" for="keadaan">
-                <input type="radio" name="keadaan" value="Sedang diproses" id="keadaan" {{$item->keadaan == 'Sedang diproses'? 'checked' : ''}} > Waiting for confirmation
-                <input type="radio" name="keadaan" value="Dipinjam" id="keadaan" {{$item->keadaan == 'Dipinjam'? 'checked' : ''}} > On loan
-              </label>
-            </div>
-          </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
 @endsection

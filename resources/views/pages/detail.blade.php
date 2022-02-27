@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Sanur Independent School Library | DETAIL
+{{ trans('detail.title.sub') }} | DETAIL
 @endsection
 
 @section('content')
@@ -14,10 +14,10 @@ Sanur Independent School Library | DETAIL
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                Books
+                                {{ trans('detail.breadcrumb.books') }}
                             </li>
                             <li class="breadcrumb-item active">
-                                Details
+                                {{ trans('detail.breadcrumb.details') }}
                             </li>
                         </ol>
                     </nav>
@@ -42,7 +42,7 @@ Sanur Independent School Library | DETAIL
                 <div class="col-lg-6">
                     <div class="card card-details card-right">
                         <h2>
-                            Book Details
+                            {{ trans('detail.detail.book_detail') }}
                         </h2>
                         <hr>
                         <table class="trip-informations">
@@ -61,7 +61,7 @@ Sanur Independent School Library | DETAIL
                                 </tr>
                                 <tr>
                                     <th width="50%">
-                                        Author
+                                        {{ trans('detail.detail.author') }}
                                     </th>
                                     <td width="50%" class="text-end">
                                         {{ $item->pengarang }}
@@ -69,7 +69,7 @@ Sanur Independent School Library | DETAIL
                                 </tr>
                                 <tr>
                                     <th width="50%">
-                                        Publisher
+                                        {{ trans('detail.detail.publisher') }}
                                     </th>
                                     <td width="50%" class="text-end">
                                         {{ $item->penerbit }}
@@ -77,11 +77,11 @@ Sanur Independent School Library | DETAIL
                                 </tr>
                                 <tr>
                                     <th width="50%">
-                                        Stock
+                                        {{ trans('detail.detail.stock') }}
                                     </th>
                                     <td width="50%" class="text-end">
                                         @if ($item->jumlah <= 0)
-                                            OUT OF STOCK
+                                        {{ trans('detail.detail.out_of_stock') }}
                                         @else 
                                         {{ $item->jumlah }}
                                         @endif
@@ -89,7 +89,7 @@ Sanur Independent School Library | DETAIL
                                 </tr>
                                 <tr>
                                     <th width="50%">
-                                        Bookshelf
+                                        {{ trans('detail.detail.bookshelf') }}
                                     </th>
                                     <td width="50%" class="text-end">
                                         {{ $item->rak }}
@@ -98,16 +98,44 @@ Sanur Independent School Library | DETAIL
                             </tbody>
                         </table>
                     </div>
-                    <div class="join-container">
+
+                    @auth
+                        @can('user')
+                        <div class="join-container">
+                            <a href="{{ route('loan-user.create') }}" class="text-decoration-none">
+                                @csrf
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
+                                        {{ trans('home.menu.transaction') }}
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                        @endcan
+                        @can('admin')
+                        <div class="join-container">
+                            <a href="{{ route('dashboard') }}" class="text-decoration-none">
+                                @csrf
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
+                                        {{ trans('home.menu.dashboard') }}
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                        @endcan
+                    @else
+                        <div class="join-container">
                             <a href="{{ route('home') }}" class="text-decoration-none">
                                 @csrf
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
-                                        BACK
+                                        {{ trans('detail.detail.back') }}
                                     </button>
                                 </div>
                             </a>
-                    </div>
+                        </div>
+                    @endauth
                 </div>
             </div>
         </div>

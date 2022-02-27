@@ -25,7 +25,7 @@ class CategoryRequest extends FormRequest
     public function rules(Category $category)
     {
         return [
-            'kode_kategori' => 'required|unique:categories'.$category->id,
+            'kode_kategori' => 'required', 'unique:categories' . $category->id,
             'nama_kategori' => 'required|max:30'
         ];
     }

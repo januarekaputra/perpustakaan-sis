@@ -21,38 +21,6 @@
 
     <div class="card shadow">
       <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>CODE</th>
-                  <th>TITLE</th>
-                  <th>STOCK</th>
-                </tr>
-            </thead>
-              <tbody>
-                @forelse ($books as $book)
-                <tr>
-                  <td>{{ $book->kode_buku }}</td>
-                  <td>{{ $book->judul }}</td>
-                  <td>
-                    @if ($book->jumlah <= 0)
-                      Stock Habis
-                    @else 
-                      {{ $book->jumlah }}
-                    @endif
-                  </td>
-                </tr>
-                @empty
-                <tr>
-                  <td colspan="7" class="text-center">
-                    Data Not Available
-                  </td>
-                </tr>
-                @endforelse
-              </tbody>
-          </table>
-        </div>
         <form action="{{ route('loan-user.store') }}" method="POST">
           @csrf
           {{-- buku loan --}}

@@ -22,7 +22,6 @@ class CreateMembersTable extends Migration
             $table->string('alamat', 100);
             $table->string('email', 100)->nullable();
             $table->string('no_telp', 13)->nullable();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

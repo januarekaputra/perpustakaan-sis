@@ -47,7 +47,7 @@
                   <td>{{ $item->loan->tgl_pengembalian }}</td>
                   <td>{{ $tgl_kembali }}</td>
                   <td>
-                    @if ($item->loan->tgl_pengembalian < $tgl_kembali)
+                    @if ($item->loan->tgl_pengembalian < $item->created_at)
                       <label class="badge badge-danger">Late</label>
                     @else
                       <label class="badge badge-success">It's been returned</label>

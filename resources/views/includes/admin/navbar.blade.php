@@ -28,7 +28,7 @@
             <li>
                 <form action="/logout" method="POST">
                     @csrf
-                    <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure want to logout ?')">
+                    <button type="submit" class="dropdown-item">
                         Logout <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </form>

@@ -79,7 +79,12 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Category::findOrFail($id);
+
+        return view('pages.admin.category.edit', [
+            'item' => $item,
+            'title' => 'CATEGORY',
+        ]);
     }
 
     /**
@@ -89,9 +94,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->nama_kategori);
+        $item = Category::findOrFail($id);
+        $edit = $item->update($data);
+
+        if($edit) {
+            alert()->success('Success', 'Category Has Been Updated!');
+            return redirect()->route('category.index')->with('edit', 'Cateogry Has Been Updated!');
+        }
+            alert()->error('Error','Opps, Category Cannot Be Updated!');
+            return redirect()->route('category.index');
     }
 
     /**
