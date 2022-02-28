@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Member;
-use Illuminate\Http\Request;
 use App\Http\Requests\Admin\MemberRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class MemberController extends Controller

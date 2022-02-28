@@ -59,20 +59,20 @@
         Master File
     </div>
   
-    <!-- Nav Item -->
-    <li class="nav-item {{ Route::is('member*') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('member.index') }}">
+    <!-- Nav Item - Member Collapse Menu -->
+    <li class="nav-item {{ Route::is('member*', 'user*') ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMember"
+            aria-expanded="true" aria-controls="collapseMember">
             <i class="fas fa-users"></i>
             <span>Member</span>
         </a>
-    </li>
-
-    <!-- Nav Item -->
-    <li class="nav-item {{ Route::is('user*') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('user.index') }}">
-            <i class="fa-solid fa-user"></i>
-            <span>User Register</span>
-        </a>
+        <div id="collapseMember" class="collapse" aria-labelledby="headingMember"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{ Route::is('member*') ? 'active' : '' }}" href="{{ route('member.index') }}">Member</a>
+                <a class="collapse-item {{ Route::is('user*') ? 'active' : '' }}" href="{{ route('user.index') }}">User Register</a>
+            </div>
+        </div>
     </li>
   
     <!-- Nav Item - Book Collapse Menu -->
