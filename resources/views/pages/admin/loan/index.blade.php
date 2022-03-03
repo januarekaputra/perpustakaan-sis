@@ -89,7 +89,7 @@
                       <form action="{{ route('loan.update', $item->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <button class="btn btn-warning" onclick="return confirm('Anda yakin data ini sudah kembali?')"><i class="fas fa-arrow-circle-left"></i>
+                        <button class="btn btn-warning" onclick="return confirm('Are you sure you want return this book?')"><i class="fas fa-arrow-circle-left"></i>
                           <span class="text">Restore</span>
                         </button>
                       </form>

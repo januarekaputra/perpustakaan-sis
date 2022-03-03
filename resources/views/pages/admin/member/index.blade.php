@@ -86,7 +86,7 @@
                     <form action="{{ route('member.destroy', $item->no_anggota) }}" method="POST" class="d-inline">
                       @csrf
                       @method('delete')
-                      <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{ $item->nama_anggota }}?')">
+                      <button class="btn btn-danger" onclick="return confirm('Are you sure want to delete {{ $item->nama_anggota }}?')">
                         <i class="fa fa-trash"></i>
                       </button>
                     </form>
