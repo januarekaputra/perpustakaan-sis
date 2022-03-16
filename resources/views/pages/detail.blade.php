@@ -114,11 +114,11 @@
                         @endcan
                         @can('admin')
                         <div class="join-container">
-                            <a href="{{ route('dashboard') }}" class="text-decoration-none">
+                            <a href="{{ route('home') }}" class="text-decoration-none">
                                 @csrf
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
-                                        {{ trans('home.menu.dashboard') }}
+                                        {{ trans('detail.detail.back') }}
                                     </button>
                                 </div>
                             </a>

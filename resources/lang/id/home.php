@@ -12,7 +12,7 @@ return [
     'categories' => "KATEGORI",
     'login' => "MASUK",
     'welcome' => "Selamat Datang ",
-    'dashboard' => "Dashbor",
+    'dashboard' => "Dasbor",
     'logout' => "Keluar",
     'transaction' => "Transaksi"
   ],

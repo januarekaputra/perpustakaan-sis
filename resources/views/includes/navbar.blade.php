@@ -71,7 +71,7 @@
 
                             @can('user')
                             
-                            <li><a class="dropdown-item" href="{{ route('dashboard-user') }}">{{ trans('home.menu.transaction') }} <i class="fas fa-columns"></i></a></li>
+                            <li><a class="dropdown-item" href="{{ route('loan-user.index') }}">{{ trans('home.menu.transaction') }} <i class="fas fa-columns"></i></a></li>
 
                             @endcan
 

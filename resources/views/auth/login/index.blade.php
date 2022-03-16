@@ -124,7 +124,12 @@
                                         @enderror
                                       </div>
                                       <div class="form-group">
-                                        <input type="password" class="form-control form-control-user @error('username') is-invalid @enderror" id="password" placeholder="Password" name="password">
+                                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required>
+                                        @error('password')
+                                          <div class="invalid-feedback">
+                                            {{ $message }}
+                                          </div>
+                                        @enderror
                                       </div>
                                       <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
                                       <hr>

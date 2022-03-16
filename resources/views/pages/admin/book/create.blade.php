@@ -40,7 +40,7 @@
 
           <div class="form-group">
             <label for="judul">Title</label>
-            <input id="judul" placeholder="Title" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul') }}" type="text" name="judul" autofocus>
+            <input id="judul" placeholder="Title" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul') }}" type="text" name="judul" autofocus required>
             @error('judul')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
           </div>
           <div class="form-group">
             <label for="pengarang">Author</label>
-            <input id="pengarang" placeholder="Author" class="form-control @error('pengarang') is-invalid @enderror" value="{{ old('pengarang') }}" type="text" name="pengarang">
+            <input id="pengarang" placeholder="Author" class="form-control @error('pengarang') is-invalid @enderror" value="{{ old('pengarang') }}" type="text" name="pengarang" required>
             @error('pengarang')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
           </div>
           <div class="form-group">
             <label for="penerbit">Publisher</label>
-            <input id="penerbit" placeholder="Publisher" class="form-control @error('penerbit') is-invalid @enderror" value="{{ old('penerbit') }}" type="text" name="penerbit">
+            <input id="penerbit" placeholder="Publisher" class="form-control @error('penerbit') is-invalid @enderror" value="{{ old('penerbit') }}" type="text" name="penerbit" required>
             @error('penerbit')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -67,7 +67,7 @@
           </div>
           <div class="form-group">
             <label for="category_id" class="form-label">Category</label>
-            <select id="category_id" name="category_id" class="form-control single @error('category_id') is-invalid @enderror" value="{{ old('category_id') }}" aria-label="Default select example">
+            <select id="category_id" name="category_id" class="form-control single @error('category_id') is-invalid @enderror" value="{{ old('category_id') }}" aria-label="Default select example" required>
               <option value="">Select Category</option>
               @foreach ($categories as $category)
                   <option value="{{ $category->id }}">
@@ -83,7 +83,7 @@
           </div>
           <div class="form-group">
             <label for="jumlah">Stock</label>
-            <input id="jumlah" placeholder="Stock" class="form-control @error('jumlah') is-invalid @enderror" value="{{ old('jumlah') }}" type="text" name="jumlah">
+            <input id="jumlah" placeholder="Stock" class="form-control @error('jumlah') is-invalid @enderror" value="{{ old('jumlah') }}" type="text" name="jumlah" required>
             @error('jumlah')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -101,7 +101,7 @@
           </div>
           <div class="form-group">
             <label for="image">Image</label>
-            <input id="image" placeholder="Image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" type="file" name="image">
+            <input id="image" placeholder="Image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" type="file" name="image" required>
             @error('image')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

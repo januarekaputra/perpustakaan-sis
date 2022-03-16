@@ -63,7 +63,7 @@
 
           <div class="form-group">
             <label for="books_id" class="form-label">Title</label>
-            <select id="books_id" name="books_id" class="form-control single @error('books_id') is-invalid @enderror" value="{{ old('books_id') }}" data-dependent="books_id">
+            <select id="books_id" name="books_id" class="form-control single @error('books_id') is-invalid @enderror" value="{{ old('books_id') }}" data-dependent="books_id" required>
               <option value="">Choose Book Title</option>
               @foreach ($books as $book)
                 <option value="{{ $book->id }}">
@@ -82,7 +82,7 @@
           {{-- member loan --}}
           <div class="form-group">
             <label for="members_id" class="form-label">Member</label>
-            <select id="members_id" name="members_id" class="form-control single @error('members_id') is-invalid @enderror" value="{{ old('members_id') }}">
+            <select id="members_id" name="members_id" class="form-control single @error('members_id') is-invalid @enderror" value="{{ old('members_id') }}" required>
               <option value="">Select Member</option>
               @foreach ($members as $member)
                   <option value="{{ $member->id }}">

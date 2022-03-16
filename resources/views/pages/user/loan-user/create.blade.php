@@ -36,7 +36,7 @@
 
           <div class="form-group">
             <label for="books_id" class="form-label">Title</label>
-            <select id="books_id" name="books_id" class="form-control single @error('books_id') is-invalid @enderror" value="{{ old('books_id') }}" data-dependent="books_id">
+            <select id="books_id" name="books_id" class="form-control single @error('books_id') is-invalid @enderror" value="{{ old('books_id') }}" data-dependent="books_id" required>
               <option value="">Choose Book Title</option>
               @foreach ($books as $book)
                 <option value="{{ $book->id }}">

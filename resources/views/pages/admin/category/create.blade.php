@@ -29,7 +29,7 @@
           </div>
           <div class="form-group">
             <label for="nama_kategori">Category</label>
-            <input id="nama_kategori" placeholder="Category" class="form-control @error('nama_kategori') is-invalid @enderror" value="{{ old('nama_kategori') }}" type="text" name="nama_kategori" autofocus>
+            <input id="nama_kategori" placeholder="Category" class="form-control @error('nama_kategori') is-invalid @enderror" value="{{ old('nama_kategori') }}" type="text" name="nama_kategori" autofocus required>
             @error('nama_kategori')
               <div class="invalid-feedback">
                 {{ $message }}

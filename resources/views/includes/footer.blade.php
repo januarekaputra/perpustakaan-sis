@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row border-top justify-content-center align-items-center pt-4">
             <div class="col-auto text-gray-500 font-weight-light">
-                ©2022 Copyright {{ trans('home.title.sub') }} • All Right Reserved
+                ©2022 • {{ trans('home.title.sub') }} •
             </div>
         </div>
     </div>

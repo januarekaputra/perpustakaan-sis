@@ -30,14 +30,14 @@
           </div>
           <div class="form-group">
             <label for="nama_anggota">Name</label>
-            <input id="nama_anggota" placeholder="Name" class="form-control" value="{{ $item->nama_anggota }}" type="text" name="nama_anggota">
+            <input id="nama_anggota" placeholder="Name" class="form-control" value="{{ $item->nama_anggota }}" type="text" name="nama_anggota" required>
           </div>
           <div class="form-group">
             <label for="jen_kel" class="form-label">Gender</label>
             <div class="form-check">
               <label class="form-check-label" for="jen_kel">
-                <input type="radio" name="jen_kel" value="Laki-Laki" id="jen_kel" {{$item->jen_kel == 'Laki-Laki'? 'checked' : ''}} > Male
-                <input type="radio" name="jen_kel" value="Perempuan" id="jen_kel" {{$item->jen_kel == 'Perempuan'? 'checked' : ''}} > Female
+                <input type="radio" name="jen_kel" value="Laki-Laki" id="jen_kel" {{$item->jen_kel == 'Laki-Laki'? 'checked' : ''}} required> Male
+                <input type="radio" name="jen_kel" value="Perempuan" id="jen_kel" {{$item->jen_kel == 'Perempuan'? 'checked' : ''}} required> Female
               </label>
             </div>
           </div>
@@ -45,24 +45,24 @@
             <label for="status" class="form-label">Status</label>
             <div class="form-check">
               <label class="form-check-label" for="status">
-                <input type="radio" name="status" value="Guru" id="status" {{$item->status == 'Guru'? 'checked' : ''}} > Teacher
-                <input type="radio" name="status" value="Siswa" id="status" {{$item->status == 'Siswa'? 'checked' : ''}} > Student
-                <input type="radio" name="status" value="Staff" id="status" {{$item->status == 'Staff'? 'checked' : ''}} > Staff
+                <input type="radio" name="status" value="Guru" id="status" {{$item->status == 'Guru'? 'checked' : ''}} required> Teacher
+                <input type="radio" name="status" value="Siswa" id="status" {{$item->status == 'Siswa'? 'checked' : ''}} required> Student
+                <input type="radio" name="status" value="Staff" id="status" {{$item->status == 'Staff'? 'checked' : ''}} required> Staff
               </label>
             </div>
           </div>
           
           <div class="form-group">
             <label for="alamat">Address</label>
-            <input id="alamat" placeholder="Address" class="form-control" value="{{ $item->alamat }}" type="text" name="alamat">
+            <input id="alamat" placeholder="Address" class="form-control" value="{{ $item->alamat }}" type="text" name="alamat" required>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input id="email" placeholder="Email" class="form-control" value="{{ $item->email }}" type="email" name="email">
+            <input id="email" placeholder="Email" class="form-control" value="{{ $item->email }}" type="email" name="email" required>
           </div>
           <div class="form-group">
             <label for="no_telp">Phone Number</label>
-            <input id="no_telp" placeholder="Phone Number" class="form-control" value="{{ $item->no_telp }}" type="number" name="no_telp">
+            <input id="no_telp" placeholder="Phone Number" class="form-control" value="{{ $item->no_telp }}" type="number" name="no_telp" required>
           </div>
           <button type="submit" class="btn btn-warning btn-icon-split">
             <span class="icon text-white-50">

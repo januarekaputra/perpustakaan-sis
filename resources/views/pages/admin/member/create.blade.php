@@ -56,19 +56,19 @@
           <div class="form-group">
             <label for="status" class="form-label">Status</label>
             <div class="form-check">
-              <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Guru" {{ old('status') == 'Guru' ? 'checked' : '' }}>
+              <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Guru" {{ old('status') == 'Guru' ? 'checked' : '' }} required>
               <label class="form-check-label" for="status">
                 Teacher
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Siswa" {{ old('status') == 'Siswa' ? 'checked' : '' }}>
+              <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Siswa" {{ old('status') == 'Siswa' ? 'checked' : '' }} required>
               <label class="form-check-label" for="status">
                 Student
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Staff" {{ old('status') == 'Staff' ? 'checked' : '' }}>
+              <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Staff" {{ old('status') == 'Staff' ? 'checked' : '' }} required>
               <label class="form-check-label" for="status">
                 Staff
               </label>
@@ -90,7 +90,7 @@
           </div>
           <div class="form-group @error('email') is-invalid @enderror">
             <label for="email">Email</label>
-            <input id="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" name="email">
+            <input id="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" name="email" required>
             @error('email')
             <div class="invalid-feedback">
               {{ $message }}
@@ -99,7 +99,7 @@
           </div>
           <div class="form-group">
             <label for="no_telp">Phone Number</label>
-            <input id="no_telp" placeholder="Phone Number" class="form-control @error('no_telp') is-invalid @enderror" value="{{ old('no_telp') }}" type="number" name="no_telp">
+            <input id="no_telp" placeholder="Phone Number" class="form-control @error('no_telp') is-invalid @enderror" value="{{ old('no_telp') }}" type="number" name="no_telp" required>
             @error('no_telp')
             <div class="invalid-feedback">
               {{ $message }}

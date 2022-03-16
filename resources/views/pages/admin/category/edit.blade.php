@@ -32,7 +32,7 @@
 
           <div class="form-group">
             <label for="nama_kategori">Category</label>
-            <input id="nama_kategori" class="form-control" value="{{ $item->nama_kategori }}" type="text" name="nama_kategori">
+            <input id="nama_kategori" class="form-control" value="{{ $item->nama_kategori }}" type="text" name="nama_kategori" required>
           </div>
 
           <button type="submit" class="btn btn-warning btn-icon-split">
