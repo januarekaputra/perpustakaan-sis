@@ -71,7 +71,13 @@
           </div>
           <div class="form-group">
             <label for="image">Image</label>
-            <input id="image" placeholder="Image" class="form-control" type="file" name="image" value="{{ $item->image ? Storage::url($item->image) : '' }}" required>
+            <input type="hidden" name="oldImage" value="{{ ($item->image) }}">
+            @if ($item->image)
+              <img src="{{ Storage::url($item->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+            @else
+              <img class="img-preview img-fluid mb-3 col-sm-5">
+            @endif
+            <input id="image" placeholder="Image" class="form-control" type="file" name="image" value="{{ Storage::url($item->image) }}" required onchange="previewImage()">
           </div>
           <button type="submit" class="btn btn-warning btn-icon-split">
             <span class="icon text-white-50">
@@ -92,5 +98,20 @@
     $(document).ready(function() {
       $('.single').select2();
     });
+
+    function previewImage() {
+      const image = document.querySelector('#image');
+      const imgPreview = document.querySelector('.img-preview');
+      
+      imgPreview.style.display = 'block';
+
+      const oFReader = new FileReader();
+      oFReader.readAsDataURL(image.files[0]);
+
+      oFReader.onload = function(oFREvent) {
+        imgPreview.src = oFREvent.target.result;
+      }
+      
+    }
   </script>
 @endpush

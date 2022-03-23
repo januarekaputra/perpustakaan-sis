@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\BookRequest;
 
@@ -112,9 +113,15 @@ class BookController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->judul);
-        $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
-        );
+        
+        if($request->file('image')) {
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $data['image'] = $request->file('image')->store(
+                'assets/gallery', 'public'
+            );
+        }
 
         $item = Book::findOrFail($id);
         $edit = $item->update($data);
@@ -133,9 +140,12 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
-        $item = Book::findOrFail($id);
+        if($book->image){
+            Storage::delete($book->image);
+        }
+        $item = Book::findOrFail($book->id);
         $delete = $item->delete();
 
         if ($delete) {
