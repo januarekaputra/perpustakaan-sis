@@ -171,24 +171,8 @@
                                   </div>
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-user @error('address') is-invalid @enderror" id="address" name="address" placeholder="Address" required value="{{ old('address') }}">
-                                @error('address')
-                                  <div class="invalid-feedback">
-                                    {{ $message }}
-                                  </div>
-                                @enderror
-                              </div>
-                              <div class="form-group">
                                 <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" required value="{{ old('email') }}">
                                 @error('email')
-                                  <div class="invalid-feedback">
-                                    {{ $message }}
-                                  </div>
-                                @enderror
-                              </div>
-                              <div class="form-group">
-                                <input type="number" class="form-control form-control-user @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="Phone Number" required value="{{ old('phone') }}">
-                                @error('phone')
                                   <div class="invalid-feedback">
                                     {{ $message }}
                                   </div>

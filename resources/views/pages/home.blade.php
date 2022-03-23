@@ -6,8 +6,40 @@
 
 @section('content')
 <!-- Header -->
-<header class="text-center">
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+@auth
+    <!-- Header -->
+    @can('user')
+    <header class="text-center header-user" style="padding: 180px 0 165px; margin-top: -90px; background-image: url(frontend/images/student2.jpg); background-size: cover;">
+        <h1 class="text-white">
+            {{ trans('home.header.title') }}, {{ auth()->user()->name }}
+        </h1>
+        <p class="mt-3 text-white">
+            {{ trans('home.header.sub') }}
+        </p>
+        <a href="#books" class="btn btn-get-started px-4 mt-4">
+            {{ trans('home.pic.button') }}
+        </a>
+    </header>
+    @endcan
+
+    @can('admin')
+    <header class="text-center header-admin" style="padding: 180px 0 165px; margin-top: -90px; background-image: url(frontend/images/admin1.jpg); background-size: cover;">
+        <h1 class="text-white">
+            {{ trans('home.header.title') }}, {{ auth()->user()->name }}
+        </h1 class="text-white">
+        <p class="mt-3 text-white">
+            {{ trans('home.header.sub') }}
+        </p>
+        <a href="#books" class="btn btn-get-started px-4 mt-4">
+            {{ trans('home.pic.button') }}
+        </a>
+        <a class="btn btn-dashboard px-4 mt-4" style="background-color: #f2f2f2;
+        color: #838383;" href="{{ route('dashboard') }}">{{ trans('home.menu.dashboard') }}
+        </a>
+    </header>
+    @endcan
+@else
+    <div id="myCarousel" class="carousel slide text-center" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -17,11 +49,10 @@
             <div class="carousel-item active">
                 <img src="{{ url('frontend/images/SIS1.jpg') }}" class="d-block bd-placeholder-img" alt="..." width="1350x" height="500px aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777">
                 
-    
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1 class="text-white">{{ trans('home.pic.title') }}</h1>
-                        <p class="text-white">"Learning For Living"</p>
+                        <h1 class="text-white" style="font-family: 'Playfair Display', serif; font-weight: bold; font-size: 50px;">{{ trans('home.pic.title') }}</h1>
+                        <p class="text-white" style="font-size: 22px;">Learning For Living"</p>
                         <p><a class="btn btn-lg" style="background-color: #ff9e53;
                             color: #ffffff;" href="#books">{{ trans('home.pic.button') }}</a></p>
                     </div>
@@ -29,11 +60,11 @@
             </div>
             <div class="carousel-item">
                 <img src="{{ url('frontend/images/SIS2.jpg') }}" class="d-block bd-placeholder-img" alt="..." width="1350x" height="500px aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777">
-    
+
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1 class="text-white">{{ trans('home.pic.title') }}</h1>
-                        <p class="text-white">"Learning For Living"</p>
+                        <h1 class="text-white" style="font-family: 'Playfair Display', serif; font-weight: bold; font-size: 50px;">{{ trans('home.pic.title') }}</h1>
+                        <p class="text-white" style="font-size: 22px;">"Learning For Living"</p>
                         <p><a class="btn btn-lg" style="background-color: #ff9e53;
                             color: #ffffff;" href="#books">{{ trans('home.pic.button') }}</a></p>
                     </div>
@@ -41,11 +72,11 @@
             </div>
             <div class="carousel-item">
                 <img src="{{ url('frontend/images/SIS3.jpg') }}" class="d-block bd-placeholder-img" alt="..." width="1350x" height="500px aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777">
-    
+
                 <div class="container">
                 <div class="carousel-caption text-end">
-                    <h1 class="text-white">{{ trans('home.pic.title') }}</h1>
-                    <p class="text-white">"Learning For Living"</p>
+                    <h1 class="text-white" style="font-family: 'Playfair Display', serif; font-weight: bold; font-size: 50px;">{{ trans('home.pic.title') }}</h1>
+                    <p class="text-white" style="font-size: 22px;">"Learning For Living"</p>
                     <p><a class="btn btn-lg" style="background-color: #ff9e53;
                         color: #ffffff;" href="#books">{{ trans('home.pic.button') }}</a></p>
                 </div>
@@ -61,33 +92,39 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    {{-- <h1>
-        Welcome To 
-        <br>
-        Sanur Independent School Library
-    </h1>
-    <p class="mt-3">
-        "Learning For Living"
-    </p>
-    <a href="#books" class="btn btn-get-started px-4 mt-4">
-        SEE BOOKS
-    </a> --}}
-</header>
+    {{-- <header class="text-center">
+    </header> --}}
+@endauth
+
 <!-- Main -->
 <main>
-<!-- Statistik -->
-    {{-- <div class="container">
+@auth
+    <!-- Statistik -->
+    @can('admin')
+    <div class="container">
         <section class="section-stats row justify-content-center" id="stats">
-            <div class="col-4 col-md-4 stats-detail">
+            <div class="col-2 col-md-2 stats-detail">
                 <h2>{{ $member }}</h2>
-                <p>Members</p>
+                <p>{{ trans('home.statistik.member') }}</p>
             </div>
-            <div class="col-4 col-md-4 stats-detail">
+            <div class="col-2 col-md-2 stats-detail">
                 <h2>{{ $books }}</h2>
-                <p>Books</p>
+                <p>{{ trans('home.statistik.book') }}</p>
+            </div>
+            <div class="col-2 col-md-2 stats-detail">
+                <h2>{{ $loans }}</h2>
+                <p>{{ trans('home.statistik.loan') }}</p>
+            </div>
+            <div class="col-2 col-md-2 stats-detail">
+                <h2>{{ $restores }}</h2>
+                <p>{{ trans('home.statistik.restore') }}</p>
             </div>
         </section>
-    </div> --}}
+    </div>
+    @endcan
+@endauth
+</main>
+<main>
 <!-- Wisata Populer -->
     <section class="section-popular" id="books">
         <div class="container">
@@ -129,6 +166,13 @@
                                 <a href="{{ route('detail', $item->slug) }}" class="btn btn-travel-details px-4">
                                     {{ trans('home.detail.button') }}
                                 </a>
+                                @auth
+                                    @can('user')
+                                    <a class="btn btn-dashboard px-4 mt-2" style="background-color: #f2f2f2; color: #838383;" href="{{ route('loan-user.index') }}">{{ trans('home.menu.transaction') }}
+                                    </a>
+                                    @endcan
+                                @endauth
+                                
                             </div>
                         </div>
                     </div>

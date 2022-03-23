@@ -11,14 +11,24 @@ return [
     'books' => "BOOKS",
     'categories' => "CATEGORIES",
     'login' => "LOGIN",
-    'welcome' => "Welcome ",
+    'welcome' => "Welcome",
     'dashboard' => "Dashboard",
-    'logout' => "Logout",
-    'transaction' => "Transaction"
+    'logout' => "LOGOUT",
+    'transaction' => "TRANSACTION"
   ],
   'pic' => [
-    'title' => "Welcome To Sanur Independent School Library",
+    'title' => "Welcome to Sanur Independent School Library",
     'button' => "See Book Collection",
+  ],
+  'header' => [
+    'title' => "Welcome",
+    'sub' => "Sanur Independent School Library",
+  ],
+  'statistik' => [
+    'member' => "Member",
+    'book' => "Books",
+    'loan' => "Loans",
+    'restore' => "Restores",
   ],
   'detail' => [
     'detail' => "Book Collection",

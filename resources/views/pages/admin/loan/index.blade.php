@@ -13,7 +13,7 @@
       </div>
         
         <a href="{{ route('print') }}" target="_blank" class="btn btn-sm btn-danger shadow-sm">
-          <i class="fas fa-file-pdf text-white-50"></i> Print PDF
+          <i class="fas fa-file-pdf text-white-50"></i> PDF
         </a>
       
 

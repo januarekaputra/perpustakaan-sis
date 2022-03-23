@@ -56,16 +56,21 @@
             </td>
           </tr>
           <tr>
-            <th>ADDRESS</th>
-            <td>{{ $item->alamat }}</td>
-          </tr>
-          <tr>
-            <th>EMAIL</th>
-            @if ($item->email == '')
-            <td>-</td>
-            @else 
-            <td>{{ $item->email }}</td>
-            @endif
+            <th>GRADE</th>
+            <td>
+              @if($item->kelas == 'TK')
+                Kindergarten
+              @endif
+              @if($item->kelas == 'SD')
+                Primary School
+              @endif
+              @if($item->kelas == 'SMP')
+                Junior High School
+              @endif
+              @if($item->kelas == '')
+                -
+              @endif
+            </td>
           </tr>
           <tr>
             <th>PHONE NUMBER</th>

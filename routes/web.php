@@ -44,6 +44,8 @@ Route::prefix('admin')
         Route::resource('loan', '\App\Http\Controllers\Admin\LoanController');
         Route::put('/ubah/{id}', [LoanController::class, 'ubah'])->name('ubah');
         Route::get('/print', [LoanController::class, 'print'])->name('print');
+        Route::get('/printform', [LoanController::class, 'printform'])->name('printform');
+        Route::get('/printperdate/{tglawal}/{tglakhir}', [LoanController::class, 'printperdate'])->name('printperdate');
         Route::resource('restore', '\App\Http\Controllers\Admin\RestoreController');
         Route::post('/logout', [LoginController::class, 'logout']);
     });

@@ -32,6 +32,7 @@
             <label for="nama_anggota">Name</label>
             <input id="nama_anggota" placeholder="Name" class="form-control" value="{{ $item->nama_anggota }}" type="text" name="nama_anggota" required>
           </div>
+          
           <div class="form-group">
             <label for="jen_kel" class="form-label">Gender</label>
             <div class="form-check">
@@ -41,6 +42,7 @@
               </label>
             </div>
           </div>
+
           <div class="form-group">
             <label for="status" class="form-label">Status</label>
             <div class="form-check">
@@ -53,13 +55,16 @@
           </div>
           
           <div class="form-group">
-            <label for="alamat">Address</label>
-            <input id="alamat" placeholder="Address" class="form-control" value="{{ $item->alamat }}" type="text" name="alamat" required>
+            <label for="kelas" class="form-label">Grade</label>
+            <div class="form-check">
+              <label class="form-check-label" for="kelas">
+                <input type="radio" name="kelas" value="TK" id="kelas" {{$item->kelas == 'TK'? 'checked' : ''}}> Kindergarten
+                <input type="radio" name="kelas" value="SD" id="kelas" {{$item->kelas == 'SD'? 'checked' : ''}}> Primary School
+                <input type="radio" name="kelas" value="SMP" id="kelas" {{$item->kelas == 'SMP'? 'checked' : ''}}> Junior High School
+              </label>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" placeholder="Email" class="form-control" value="{{ $item->email }}" type="email" name="email" required>
-          </div>
+
           <div class="form-group">
             <label for="no_telp">Phone Number</label>
             <input id="no_telp" placeholder="Phone Number" class="form-control" value="{{ $item->no_telp }}" type="number" name="no_telp" required>

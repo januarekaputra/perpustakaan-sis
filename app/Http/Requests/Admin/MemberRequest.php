@@ -30,8 +30,7 @@ class MemberRequest extends FormRequest
             'nama_anggota' => ['required', 'max:50'],
             'jen_kel' => ['required'],
             'status' => ['required'],
-            'alamat' => ['required', 'max:100'],
-            'email' => ['max:100'],
+            'kelas' => ['nullable'],
             'no_telp' => ['max:13', 'required']
         ];
     }

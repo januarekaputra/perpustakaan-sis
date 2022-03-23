@@ -22,6 +22,8 @@ class HomeController extends Controller
         return view('pages.home', [
             'member' => Member::count(),
             'books' => Book::count(),
+            'loans' => Loan::count(),
+            'restores' => Restore::count(),
             'items' => $items,
             "active" => 'home',
             "title" => $title

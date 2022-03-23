@@ -44,7 +44,7 @@
                   <th>NAME</th>
                   <th>GENDER</th>
                   <th>STATUS</th>
-                  <th>ADDRESS</th>
+                  <th>GRADE</th>
                   <th>ACTION</th>
                 </tr>
             </thead>
@@ -73,7 +73,20 @@
                       Staff
                     @endif
                   </td>
-                  <td>{{ $item->alamat }}</td>
+                  <td>
+                    @if($item->kelas == 'TK')
+                      Kindergarten
+                    @endif
+                    @if($item->kelas == 'SD')
+                      Primary School
+                    @endif
+                    @if($item->kelas == 'SMP')
+                      Junior High School
+                    @endif
+                    @if($item->kelas == '')
+                      -
+                    @endif
+                  </td>
                   <td>
                     <a href="{{ route('member.show', $item->no_anggota) }}" class="btn btn-info">
                       <i class="fa fa-eye"></i>

@@ -24,9 +24,7 @@
                   <th>ID</th>
                   <th>NAME</th>
                   <th>USERNAME</th>
-                  <th>ADDRESS</th>
                   <th>EMAIL</th>
-                  <th>PHONE NUMBER</th>
                   <th>ACTION</th>
                 </tr>
             </thead>
@@ -37,9 +35,7 @@
                       <td>{{ $item->id }}</td>
                       <td>{{ $item->name }}</td>
                       <td>{{ $item->username }}</td>
-                      <td>{{ $item->address }}</td>
                       <td>{{ $item->email }}</td>
-                      <td>{{ $item->phone }}</td>
                       <td>
                         <form action="{{ route('user.destroy', $item->id) }}" method="POST" class="d-inline">
                           @csrf

@@ -102,11 +102,19 @@
                     @auth
                         @can('user')
                         <div class="join-container">
-                            <a href="{{ route('loan-user.create') }}" class="text-decoration-none">
+                            {{-- <a href="{{ route('loan-user.create') }}" class="text-decoration-none">
                                 @csrf
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
                                         {{ trans('home.menu.transaction') }}
+                                    </button>
+                                </div>
+                            </a> --}}
+                            <a href="{{ route('home') }}" class="text-decoration-none">
+                                @csrf
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
+                                        {{ trans('detail.detail.back') }}
                                     </button>
                                 </div>
                             </a>

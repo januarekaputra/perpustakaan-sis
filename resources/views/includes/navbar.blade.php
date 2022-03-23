@@ -55,7 +55,6 @@
                 <li class="nav-item mx-md-2 {{ Route::is('categories') ? 'active' : '' }}">
                     <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">{{ trans('home.menu.categories') }}</a>
                 </li>
-            </ul>
                 @auth
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
@@ -63,19 +62,14 @@
                             {{ trans('home.menu.welcome') }}, {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @can('admin')
-                            
-                            <li><a class="dropdown-item" href="{{ route('dashboard') }}">{{ trans('home.menu.dashboard') }} <i class="fas fa-columns"></i></a></li>
 
-                            @endcan
-
-                            @can('user')
+                            {{-- @can('user')
                             
                             <li><a class="dropdown-item" href="{{ route('loan-user.index') }}">{{ trans('home.menu.transaction') }} <i class="fas fa-columns"></i></a></li>
-
-                            @endcan
-
                             <li><hr class="dropdown-divider"></li>
+                            
+
+                            @endcan --}}
                             <li>
                                 <form action="/logout" method="POST">
                                     @csrf
@@ -94,6 +88,8 @@
                     </li>
                 </ul>
                 @endauth
+            </ul>
+                
         </div>
     </div>
 </nav>

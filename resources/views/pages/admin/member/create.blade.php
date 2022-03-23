@@ -54,7 +54,7 @@
           </div>
           
           <div class="form-group">
-            <label for="status" class="form-label">Status</label>
+            <label for="kelas" class="form-label">Status</label>
             <div class="form-check">
               <input class="form-check-input @error('status') is-invalid @enderror" type="radio" name="status" id="status" value="Guru" {{ old('status') == 'Guru' ? 'checked' : '' }} required>
               <label class="form-check-label" for="status">
@@ -79,24 +79,34 @@
               </div>
             @enderror
           </div>
+
           <div class="form-group">
-            <label for="alamat">Address</label>
-            <input id="alamat" placeholder="Address" class="form-control @error('alamat') is-invalid @enderror" value="{{ old('alamat') }}" type="text" name="alamat" required>
-            @error('alamat')
-            <div class="invalid-feedback">
-              {{ $message }}
+            <label for="kelas" class="form-label">Grade</label>
+            <div class="form-check">
+              <input class="form-check-input @error('kelas') is-invalid @enderror" type="radio" name="kelas" id="kelas" value="TK" {{ old('kelas') == 'TK' ? 'checked' : '' }}>
+              <label class="form-check-label" for="kelas">
+                Kindergarten
+              </label>
             </div>
+            <div class="form-check">
+              <input class="form-check-input @error('kelas') is-invalid @enderror" type="radio" name="kelas" id="kelas" value="SD" {{ old('kelas') == 'SD' ? 'checked' : '' }}>
+              <label class="form-check-label" for="kelas">
+                Primary School
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input @error('kelas') is-invalid @enderror" type="radio" name="kelas" id="kelas" value="SMP" {{ old('kelas') == 'Staff' ? 'checked' : '' }}>
+              <label class="form-check-label" for="kelas">
+                Junior High School
+              </label>
+            </div>
+            @error('kelas')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
             @enderror
           </div>
-          <div class="form-group @error('email') is-invalid @enderror">
-            <label for="email">Email</label>
-            <input id="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" name="email" required>
-            @error('email')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-          </div>
+          
           <div class="form-group">
             <label for="no_telp">Phone Number</label>
             <input id="no_telp" placeholder="Phone Number" class="form-control @error('no_telp') is-invalid @enderror" value="{{ old('no_telp') }}" type="number" name="no_telp" required>

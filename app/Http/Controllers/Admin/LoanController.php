@@ -20,8 +20,8 @@ class LoanController extends Controller
      */
     public function print()
     {
-        $prints = Loan::where('keadaan', 'Dipinjam')->get();
-        return view('pages.admin.loan.print', [
+        $prints = Loan::where('keadaan', 'Dipinjam')->latest()->get();
+        return view('pages.admin.loan.print.print', [
             'prints' => $prints,
         ]);
     }
@@ -190,6 +190,22 @@ class LoanController extends Controller
         }
         alert()->error('Error','Opps, Loan Cannot Be Deleted!');
         return redirect()->route('loan.index');
+    }
+
+
+    public function printform()
+    {
+        return view('pages.admin.loan.print.printperdate', [
+            "title" => 'LOAN REPORT'
+        ]);
+    }
+
+    public function printperdate($tglawal, $tglakhir)
+    {
+        $printperdate = Loan::whereBetween('tgl_pinjam', [$tglawal, $tglakhir])->latest()->get();
+        return view('pages.admin.loan.print.printloan', [
+            'printperdate' => $printperdate,
+        ]);
     }
 
 }
