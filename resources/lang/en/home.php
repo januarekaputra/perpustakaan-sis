@@ -12,7 +12,7 @@ return [
     'categories' => "CATEGORIES",
     'login' => "LOGIN",
     'welcome' => "Welcome",
-    'dashboard' => "Dashboard",
+    'dashboard' => "DASHBOARD",
     'logout' => "LOGOUT",
     'transaction' => "TRANSACTION"
   ],

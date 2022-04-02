@@ -63,13 +63,19 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                            {{-- @can('user')
+                            @can('user')
                             
                             <li><a class="dropdown-item" href="{{ route('loan-user.index') }}">{{ trans('home.menu.transaction') }} <i class="fas fa-columns"></i></a></li>
                             <li><hr class="dropdown-divider"></li>
                             
+                            @endcan
 
-                            @endcan --}}
+                            @can('admin')
+                            
+                            <li><a class="dropdown-item" href="{{ route('dashboard') }}">{{ trans('home.menu.dashboard') }} <i class="fas fa-columns"></i></a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            
+                            @endcan
                             <li>
                                 <form action="/logout" method="POST">
                                     @csrf

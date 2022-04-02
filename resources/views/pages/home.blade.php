@@ -33,9 +33,6 @@
         <a href="#books" class="btn btn-get-started px-4 mt-4">
             {{ trans('home.pic.button') }}
         </a>
-        <a class="btn btn-dashboard px-4 mt-4" style="background-color: #f2f2f2;
-        color: #838383;" href="{{ route('dashboard') }}">{{ trans('home.menu.dashboard') }}
-        </a>
     </header>
     @endcan
 @else
@@ -168,7 +165,7 @@
                                 </a>
                                 @auth
                                     @can('user')
-                                    <a class="btn btn-dashboard px-4 mt-2" style="background-color: #f2f2f2; color: #838383;" href="{{ route('loan-user.index') }}">{{ trans('home.menu.transaction') }}
+                                    <a class="btn btn-dashboard px-4 mt-2" style="background-color: #f2f2f2; color: #838383;" href="{{ route('loan-user.create') }}">{{ trans('home.menu.transaction') }}
                                     </a>
                                     @endcan
                                 @endauth
